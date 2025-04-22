@@ -1,4 +1,4 @@
-import 'package:eizo_mushi/counter/counter.dart';
+import 'package:eizo_mushi/features/main/ui/screen/main_screen.dart';
 import 'package:eizo_mushi/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const MainScreen(),
     );
   }
 }
