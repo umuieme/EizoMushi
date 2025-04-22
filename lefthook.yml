@@ -1,0 +1,20 @@
+pre-commit:
+  parallel: true
+  commands:
+    tests:
+      run: flutter test
+    static_code_analysis:
+      run: flutter analyze
+    lint_code:
+      glob: "*.dart"
+      run: dart fix --dry-run lib
+    format_code:
+      glob: "*.dart"
+      run: | 
+        dart format {staged_files}
+        git add {staged_files}
+
+commit-msg:
+  commands:
+    validate:
+      run: flutter pub run ./git_hooks/commit_message.dart {1}
