@@ -1,3 +1,4 @@
+import 'package:eizo_mushi/features/home/ui/widgets/spotlight_carousel.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -5,6 +6,13 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SpotlightCarousel(),
+        ],
+      ),
+    );
   }
 }
