@@ -1,4 +1,5 @@
 import 'package:eizo_mushi/app/theme/app_colors.dart';
+import 'package:eizo_mushi/app/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,7 +7,10 @@ class AppTheme {
   static ThemeData get light {
     return ThemeData(
       useMaterial3: true,
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: GoogleFonts.poppinsTextTheme(
+        customTextTheme,
+      ),
+
       appBarTheme: const AppBarTheme(color: Color(0x00003B73)),
       scaffoldBackgroundColor: AppColor.screenBackgroundLight,
       colorScheme: ColorScheme.fromSeed(
@@ -41,7 +45,10 @@ class AppTheme {
   static ThemeData get dark {
     return ThemeData(
       useMaterial3: true,
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: GoogleFonts.poppinsTextTheme(
+        darkTextTheme,
+      ),
+      scaffoldBackgroundColor: AppColor.screenBackgroundDark,
       appBarTheme: const AppBarTheme(
         color: Color.fromARGB(255, 16, 46, 59),
       ),
@@ -53,7 +60,13 @@ class AppTheme {
         behavior: SnackBarBehavior.floating,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColor.primary,
+        backgroundColor: Color(0xff222222),
+        selectedIconTheme: IconThemeData(
+          color: Colors.white70,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: Colors.grey,
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColor.fabBackgroundLight,

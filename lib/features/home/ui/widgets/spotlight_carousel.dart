@@ -32,7 +32,12 @@ class SpotlightCarousel extends HookWidget {
             child: AnimatedSmoothIndicator(
               count: 10,
               activeIndex: activeIndex.value,
-              effect: const WormEffect(dotHeight: 10, dotWidth: 10),
+              effect: const WormEffect(
+                dotHeight: 8,
+                dotWidth: 8,
+                activeDotColor: Colors.white,
+                dotColor: Colors.white38,
+              ),
             ),
           ),
         ),

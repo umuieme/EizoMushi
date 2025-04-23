@@ -1,4 +1,5 @@
 import 'package:eizo_mushi/features/home/ui/widgets/spotlight_carousel.dart';
+import 'package:eizo_mushi/features/home/ui/widgets/top_airing_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -11,6 +12,7 @@ class HomeTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SpotlightCarousel(),
+          TopAiring(),
         ],
       ),
     );
