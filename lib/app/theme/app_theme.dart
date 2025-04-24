@@ -72,6 +72,28 @@ class AppTheme {
         backgroundColor: AppColor.fabBackgroundLight,
         foregroundColor: AppColor.text,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColor.error,
+          foregroundColor: AppColor.textLight,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          backgroundColor: const Color(0xffaaaaaa),
+          foregroundColor: AppColor.textLight,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
+      ),
     );
   }
 }
