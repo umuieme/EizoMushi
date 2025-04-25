@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eizo_mushi/data/model/anime_detail_model.dart';
+import 'package:eizo_mushi/data/model/anime-detail/anime_detail_model.dart';
 import 'package:eizo_mushi/features/anime-detail/ui/widgets/anime_detail_overview.dart';
+import 'package:eizo_mushi/features/anime-player/ui/screen/anime_player_screen.dart';
 import 'package:eizo_mushi/features/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,16 @@ class AnimeDetailPage extends StatelessWidget {
                       AppPrimaryButton(
                         expanded: false,
                         title: 'Play',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AnimePlayerScreen(
+                                animeId: anime.dataId,
+                              ),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.play_arrow),
                         iconPosition: IconPosition.right,
                       ),

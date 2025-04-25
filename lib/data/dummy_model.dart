@@ -1,6 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:eizo_mushi/data/model/anime_detail_model.dart';
+import 'package:eizo_mushi/data/model/anime-detail/anime_detail_model.dart';
+import 'package:eizo_mushi/data/model/streaming_info/streaming_info_model.dart';
 
 class Dummy {
   Dummy._();
@@ -52,6 +53,60 @@ class Dummy {
           duration: '24m',
         ),
       ),
+    );
+  }
+
+  static StreamingInfo getStreamingInfo() {
+    return const StreamingInfo(
+      streamingLink: StreamingLink(
+        id: '574667',
+        type: 'sub',
+        link: Link(
+          file:
+              'https://ec.netmagcdn.com:2228/hls-playback/11fe694df4653a65e15d6e3579b4a07c74304cbedc237a0ba17be171702b9abb58b171f6520eb40f230e4bdb05a71817a9cf073473f58e045390b97238742b4582254aafd1fe0409af5bf7a834a64758abbe240abbd3a1ba20eadcb923dbf55d83cb483e50dd759172f7f2f66fcbc04da03922fd9db05d032e53e092711671048c52812e66b203e720a6f75bb305a708/master.m3u8',
+          type: 'hls',
+        ),
+        tracks: [
+          Track(
+            file:
+                'https://s.megastatics.com/subtitle/73fd2e74257659a8ef9b9cdd004623a5/eng-2.vtt',
+            label: 'English',
+            kind: 'captions',
+            isDefault: true,
+          ),
+          Track(
+            file:
+                'https://s.megastatics.com/thumbnails/76c7d19582984c21fb4c9962b812820a/thumbnails.vtt',
+            kind: 'thumbnails',
+            isDefault: false,
+          ),
+        ],
+        intro: TimeRange(start: 31, end: 111),
+        outro: TimeRange(start: 1376, end: 1447),
+        server: 'hd-1',
+        iframe: 'https://megacloud.blog/embed-2/e-1/YeMoMfOrEUq6?k=1',
+      ),
+      servers: [
+        Server(
+          type: 'sub',
+          dataId: '574667',
+          serverId: '4',
+          serverName: 'HD-1',
+        ),
+        Server(
+          type: 'sub',
+          dataId: '410640',
+          serverId: '1',
+          serverName: 'HD-2',
+        ),
+        Server(
+          type: 'dub',
+          dataId: '583679',
+          serverId: '4',
+          serverName: 'HD-1',
+        ),
+        Server(type: 'dub', dataId: '4145', serverId: '1', serverName: 'HD-2'),
+      ],
     );
   }
 }

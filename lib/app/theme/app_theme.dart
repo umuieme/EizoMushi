@@ -87,11 +87,11 @@ class AppTheme {
       ),
       iconButtonTheme: IconButtonThemeData(
         style: IconButton.styleFrom(
-          backgroundColor: const Color(0xffaaaaaa),
+          // backgroundColor: const Color(0xffaaaaaa),
           foregroundColor: AppColor.textLight,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(50),
+          // ),
         ),
       ),
     );
