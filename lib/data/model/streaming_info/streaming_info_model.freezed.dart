@@ -732,10 +732,10 @@ class __$LinkCopyWithImpl<$Res> implements _$LinkCopyWith<$Res> {
 /// @nodoc
 mixin _$Track {
   String get file;
-  String? get label;
   String get kind;
   @JsonKey(name: 'default')
   bool get isDefault;
+  String? get label;
 
   /// Create a copy of Track
   /// with the given fields replaced by the non-null parameter values.
@@ -753,19 +753,19 @@ mixin _$Track {
         (other.runtimeType == runtimeType &&
             other is Track &&
             (identical(other.file, file) || other.file == file) &&
-            (identical(other.label, label) || other.label == label) &&
             (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.isDefault, isDefault) ||
-                other.isDefault == isDefault));
+                other.isDefault == isDefault) &&
+            (identical(other.label, label) || other.label == label));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, file, label, kind, isDefault);
+  int get hashCode => Object.hash(runtimeType, file, kind, isDefault, label);
 
   @override
   String toString() {
-    return 'Track(file: $file, label: $label, kind: $kind, isDefault: $isDefault)';
+    return 'Track(file: $file, kind: $kind, isDefault: $isDefault, label: $label)';
   }
 }
 
@@ -776,9 +776,9 @@ abstract mixin class $TrackCopyWith<$Res> {
   @useResult
   $Res call(
       {String file,
-      String? label,
       String kind,
-      @JsonKey(name: 'default') bool isDefault});
+      @JsonKey(name: 'default') bool isDefault,
+      String? label});
 }
 
 /// @nodoc
@@ -794,19 +794,15 @@ class _$TrackCopyWithImpl<$Res> implements $TrackCopyWith<$Res> {
   @override
   $Res call({
     Object? file = null,
-    Object? label = freezed,
     Object? kind = null,
     Object? isDefault = null,
+    Object? label = freezed,
   }) {
     return _then(_self.copyWith(
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
               as String,
-      label: freezed == label
-          ? _self.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String?,
       kind: null == kind
           ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
@@ -815,6 +811,10 @@ class _$TrackCopyWithImpl<$Res> implements $TrackCopyWith<$Res> {
           ? _self.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _self.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -824,20 +824,20 @@ class _$TrackCopyWithImpl<$Res> implements $TrackCopyWith<$Res> {
 class _Track implements Track {
   const _Track(
       {required this.file,
-      this.label,
       required this.kind,
-      @JsonKey(name: 'default') required this.isDefault});
+      @JsonKey(name: 'default') required this.isDefault,
+      this.label});
   factory _Track.fromJson(Map<String, dynamic> json) => _$TrackFromJson(json);
 
   @override
   final String file;
   @override
-  final String? label;
-  @override
   final String kind;
   @override
   @JsonKey(name: 'default')
   final bool isDefault;
+  @override
+  final String? label;
 
   /// Create a copy of Track
   /// with the given fields replaced by the non-null parameter values.
@@ -860,19 +860,19 @@ class _Track implements Track {
         (other.runtimeType == runtimeType &&
             other is _Track &&
             (identical(other.file, file) || other.file == file) &&
-            (identical(other.label, label) || other.label == label) &&
             (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.isDefault, isDefault) ||
-                other.isDefault == isDefault));
+                other.isDefault == isDefault) &&
+            (identical(other.label, label) || other.label == label));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, file, label, kind, isDefault);
+  int get hashCode => Object.hash(runtimeType, file, kind, isDefault, label);
 
   @override
   String toString() {
-    return 'Track(file: $file, label: $label, kind: $kind, isDefault: $isDefault)';
+    return 'Track(file: $file, kind: $kind, isDefault: $isDefault, label: $label)';
   }
 }
 
@@ -884,9 +884,9 @@ abstract mixin class _$TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
   @useResult
   $Res call(
       {String file,
-      String? label,
       String kind,
-      @JsonKey(name: 'default') bool isDefault});
+      @JsonKey(name: 'default') bool isDefault,
+      String? label});
 }
 
 /// @nodoc
@@ -902,19 +902,15 @@ class __$TrackCopyWithImpl<$Res> implements _$TrackCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? file = null,
-    Object? label = freezed,
     Object? kind = null,
     Object? isDefault = null,
+    Object? label = freezed,
   }) {
     return _then(_Track(
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
               as String,
-      label: freezed == label
-          ? _self.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String?,
       kind: null == kind
           ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
@@ -923,6 +919,10 @@ class __$TrackCopyWithImpl<$Res> implements _$TrackCopyWith<$Res> {
           ? _self.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _self.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

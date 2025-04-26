@@ -1,9 +1,12 @@
 import 'package:eizo_mushi/app/utils/context_extension.dart';
+import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/features/common/widgets/app_image_view.dart';
 import 'package:flutter/material.dart';
 
 class TopAiring extends StatelessWidget {
-  const TopAiring({super.key});
+  const TopAiring({required this.topAiringList, super.key});
+
+  final List<AnimeInfoHomeModel> topAiringList;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class TopAiring extends StatelessWidget {
           height: 200,
           child: ListView.builder(
             itemExtent: 200,
-            itemCount: 10,
+            itemCount: topAiringList.length,
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
@@ -32,8 +35,7 @@ class TopAiring extends StatelessWidget {
                   children: [
                     Expanded(
                       child: AppImageView(
-                        imageUrl:
-                            'https://cdn.noitatnemucod.net/thumbnail/300x400/100/bcd84731a3eda4f4a306250769675065.jpg',
+                        imageUrl: topAiringList[index].poster,
                         width: 100,
                         // height: 150,
                         fit: BoxFit.cover,
@@ -43,8 +45,8 @@ class TopAiring extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Text(
-                        'One Piece',
-                        style: context.textTheme.headlineSmall,
+                        topAiringList[index].title,
+                        style: context.textTheme.titleLarge,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

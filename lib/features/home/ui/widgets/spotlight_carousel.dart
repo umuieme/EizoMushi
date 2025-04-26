@@ -1,11 +1,12 @@
+import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/features/home/ui/widgets/carousel_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SpotlightCarousel extends HookWidget {
-  const SpotlightCarousel({super.key});
-
+  const SpotlightCarousel({required this.spotlightList, super.key});
+  final List<AnimeInfoHomeModel> spotlightList;
   @override
   Widget build(BuildContext context) {
     final activeIndex = useState(0);
@@ -14,13 +15,16 @@ class SpotlightCarousel extends HookWidget {
         SizedBox(
           height: 400,
           child: PageView.builder(
-            itemCount: 10,
+            itemCount: spotlightList.length,
             padEnds: false,
             onPageChanged: (value) {
               activeIndex.value = value;
             },
             itemBuilder: (context, index) {
-              return const CarouselItem();
+              return CarouselItem(
+                position: index + 1,
+                animeInfo: spotlightList[index],
+              );
             },
           ),
         ),
@@ -30,7 +34,7 @@ class SpotlightCarousel extends HookWidget {
           right: 0,
           child: Align(
             child: AnimatedSmoothIndicator(
-              count: 10,
+              count: spotlightList.length,
               activeIndex: activeIndex.value,
               effect: const WormEffect(
                 dotHeight: 8,

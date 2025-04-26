@@ -59,16 +59,16 @@ Map<String, dynamic> _$LinkToJson(_Link instance) => <String, dynamic>{
 
 _Track _$TrackFromJson(Map<String, dynamic> json) => _Track(
       file: json['file'] as String,
-      label: json['label'] as String?,
       kind: json['kind'] as String,
       isDefault: json['default'] as bool,
+      label: json['label'] as String?,
     );
 
 Map<String, dynamic> _$TrackToJson(_Track instance) => <String, dynamic>{
       'file': instance.file,
-      'label': instance.label,
       'kind': instance.kind,
       'default': instance.isDefault,
+      'label': instance.label,
     };
 
 _TimeRange _$TimeRangeFromJson(Map<String, dynamic> json) => _TimeRange(
