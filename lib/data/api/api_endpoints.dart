@@ -3,4 +3,5 @@ class Api {
 
   static const String baseUrl = 'http://localhost:4444/';
   static const homePage = '/api';
+  static const animeInfo = '/api/info';
 }

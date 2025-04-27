@@ -1,6 +1,5 @@
 import 'package:eizo_mushi/app/theme/app_colors.dart';
 import 'package:eizo_mushi/app/utils/context_extension.dart';
-import 'package:eizo_mushi/data/dummy_model.dart';
 import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/features/anime-detail/ui/screen/anime_detail_screen.dart';
 import 'package:eizo_mushi/features/common/widgets/app_image_view.dart';
@@ -22,7 +21,7 @@ class CarouselItem extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) => AnimeDetailPage(
-            anime: Dummy.getAnimeDetail(),
+            animeBasicInfo: animeInfo,
           ),
         ),
       ),

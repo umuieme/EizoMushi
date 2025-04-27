@@ -7,10 +7,10 @@ part 'anime_detail_model.g.dart';
 abstract class AnimeDetailModel with _$AnimeDetailModel {
   const factory AnimeDetailModel({
     required bool adultContent,
-    required String dataId,
+    @JsonKey(name: 'data_id') required String dataId,
     required String id,
     required String title,
-    required String japaneseTitle,
+    @JsonKey(name: 'japanese_title') required String japaneseTitle,
     required String poster,
     required String showType,
     required AnimeInfoModel animeInfo,
@@ -25,15 +25,15 @@ abstract class AnimeInfoModel with _$AnimeInfoModel {
   const factory AnimeInfoModel({
     @JsonKey(name: 'Overview') required String overview,
     @JsonKey(name: 'Japanese') required String japanese,
-    @JsonKey(name: 'Synonyms') required String synonyms,
-    @JsonKey(name: 'Aired') required String aired,
-    @JsonKey(name: 'Premiered') required String premiered,
-    @JsonKey(name: 'Duration') required String duration,
-    @JsonKey(name: 'Status') required String status,
-    @JsonKey(name: 'MAL Score') required String malScore,
-    @JsonKey(name: 'Genres') required List<String> genres,
-    @JsonKey(name: 'Studios') required String studios,
-    @JsonKey(name: 'Producers') required List<String> producers,
+    @JsonKey(name: 'Synonyms') required String? synonyms,
+    @JsonKey(name: 'Aired') required String? aired,
+    @JsonKey(name: 'Premiered') required String? premiered,
+    @JsonKey(name: 'Duration') required String? duration,
+    @JsonKey(name: 'Status') required String? status,
+    @JsonKey(name: 'MAL Score') required String? malScore,
+    @JsonKey(name: 'Genres') required List<String>? genres,
+    @JsonKey(name: 'Studios') required String? studios,
+    @JsonKey(name: 'Producers') required List<String>? producers,
     required TvInfoModel tvInfo,
   }) = _AnimeInfoModel;
 
