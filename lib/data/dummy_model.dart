@@ -56,8 +56,8 @@ class Dummy {
     );
   }
 
-  static StreamingInfo getStreamingInfo() {
-    return const StreamingInfo(
+  static StreamingInfoModel getStreamingInfo() {
+    return const StreamingInfoModel(
       streamingLink: StreamingLink(
         id: '574667',
         type: 'sub',

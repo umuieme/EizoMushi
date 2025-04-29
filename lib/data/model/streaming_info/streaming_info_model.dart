@@ -4,14 +4,14 @@ part 'streaming_info_model.freezed.dart';
 
 /// The actual streaming info under `results`.
 @freezed
-abstract class StreamingInfo with _$StreamingInfo {
-  const factory StreamingInfo({
+abstract class StreamingInfoModel with _$StreamingInfoModel {
+  const factory StreamingInfoModel({
     required StreamingLink streamingLink,
     required List<Server> servers,
-  }) = _StreamingInfo;
+  }) = _StreamingInfoModel;
 
-  factory StreamingInfo.fromJson(Map<String, dynamic> json) =>
-      _$StreamingInfoFromJson(json);
+  factory StreamingInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$StreamingInfoModelFromJson(json);
 }
 
 @freezed
@@ -46,7 +46,7 @@ abstract class Track with _$Track {
   const factory Track({
     required String file,
     required String kind,
-    @JsonKey(name: 'default') required bool isDefault,
+    @JsonKey(name: 'default') bool? isDefault,
     String? label,
   }) = _Track;
 

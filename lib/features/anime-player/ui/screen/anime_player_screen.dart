@@ -1,71 +1,38 @@
-import 'package:chewie/chewie.dart';
-import 'package:eizo_mushi/data/dummy_model.dart';
-import 'package:eizo_mushi/data/model/streaming_info/streaming_info_model.dart';
+import 'package:eizo_mushi/app/di/di.dart';
+import 'package:eizo_mushi/features/anime-player/bloc/streaming_info/streaming_info_bloc.dart';
+import 'package:eizo_mushi/features/anime-player/ui/widget/anime_player_body.dart';
+import 'package:eizo_mushi/features/episode-list/bloc/episode_list_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:video_player/video_player.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AnimePlayerScreen extends StatefulWidget {
-  const AnimePlayerScreen({required this.animeId, super.key});
+class AnimePlayerScreen extends StatelessWidget {
+  const AnimePlayerScreen({
+    required this.animeId,
+    super.key,
+  });
   final String animeId;
-  @override
-  State createState() => _AnimePlayerScreenState();
-}
-
-class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
-  late VideoPlayerController _videoPlayerController;
-  ChewieController? _chewieController;
-  StreamingInfo? streamingInfo;
-  @override
-  void initState() {
-    super.initState();
-    streamingInfo = Dummy.getStreamingInfo();
-    _initializePlayer();
-  }
-
-  Future<void> _initializePlayer() async {
-    _videoPlayerController = VideoPlayerController.networkUrl(
-      Uri.parse(streamingInfo!.streamingLink.link.file),
-    );
-    await _videoPlayerController.initialize();
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      deviceOrientationsOnEnterFullScreen: [
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft,
-      ],
-      deviceOrientationsAfterFullScreen: [
-        DeviceOrientation.portraitUp,
-      ],
-      systemOverlaysOnEnterFullScreen: [],
-      showSubtitles: true,
-    );
-    setState(() {}); // rebuild to show the player
-  }
-
-  @override
-  void dispose() {
-    _chewieController?.dispose();
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          if (_chewieController != null &&
-              _videoPlayerController.value.isInitialized)
-            AspectRatio(
-              aspectRatio: _videoPlayerController.value.aspectRatio,
-              child: Chewie(controller: _chewieController!),
-            )
-          else
-            const CircularProgressIndicator(),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<EpisodeListBloc>()..add(EpisodeListFetch(animeId: animeId)),
+        ),
+        BlocProvider(
+          create: (context) => getIt<StreamingInfoBloc>(param1: animeId),
+        ),
+      ],
+      child: BlocListener<EpisodeListBloc, EpisodeListState>(
+        listener: (context, state) {
+          if (state is EpisodeListLoadSuccess) {
+            context.read<StreamingInfoBloc>().add(
+                  StreamingInfoFetch(episodeId: state.data.episodes.first.id),
+                );
+          }
+        },
+        child: const AnimePlayerBody(),
       ),
     );
   }

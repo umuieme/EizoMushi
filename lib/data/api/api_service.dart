@@ -41,7 +41,9 @@ class ApiService {
     required String endpoint,
     required T Function(Map<String, Object?> json) fromJson,
     Map<String, Object?>? queryParams,
+    Map<String, Object?>? pathParams,
   }) async {
+    endpoint = _processPathParams(pathParams, endpoint);
     final result = await _request(
       () => _dio.get<Map<String, Object?>>(
         endpoint,
@@ -53,6 +55,16 @@ class ApiService {
       left,
       (response) => right(response.results),
     );
+  }
+
+  String _processPathParams(Map<String, Object?>? pathParams, String endpoint) {
+    if (pathParams != null) {
+      for (final entry in pathParams.entries) {
+        // ignore: parameter_assignments
+        endpoint = endpoint.replaceAll(':${entry.key}', entry.value.toString());
+      }
+    }
+    return endpoint;
   }
 
   Future<Either<ErrorResponse, ResponseModel<T>>> post<T>({

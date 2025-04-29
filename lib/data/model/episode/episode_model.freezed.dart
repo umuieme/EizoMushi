@@ -14,11 +14,183 @@ part of 'episode_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
+mixin _$EpisodeListResponse {
+  int get totalEpisodes;
+  List<EpisodeModel> get episodes;
+
+  /// Create a copy of EpisodeListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $EpisodeListResponseCopyWith<EpisodeListResponse> get copyWith =>
+      _$EpisodeListResponseCopyWithImpl<EpisodeListResponse>(
+          this as EpisodeListResponse, _$identity);
+
+  /// Serializes this EpisodeListResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EpisodeListResponse &&
+            (identical(other.totalEpisodes, totalEpisodes) ||
+                other.totalEpisodes == totalEpisodes) &&
+            const DeepCollectionEquality().equals(other.episodes, episodes));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, totalEpisodes,
+      const DeepCollectionEquality().hash(episodes));
+
+  @override
+  String toString() {
+    return 'EpisodeListResponse(totalEpisodes: $totalEpisodes, episodes: $episodes)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $EpisodeListResponseCopyWith<$Res> {
+  factory $EpisodeListResponseCopyWith(
+          EpisodeListResponse value, $Res Function(EpisodeListResponse) _then) =
+      _$EpisodeListResponseCopyWithImpl;
+  @useResult
+  $Res call({int totalEpisodes, List<EpisodeModel> episodes});
+}
+
+/// @nodoc
+class _$EpisodeListResponseCopyWithImpl<$Res>
+    implements $EpisodeListResponseCopyWith<$Res> {
+  _$EpisodeListResponseCopyWithImpl(this._self, this._then);
+
+  final EpisodeListResponse _self;
+  final $Res Function(EpisodeListResponse) _then;
+
+  /// Create a copy of EpisodeListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalEpisodes = null,
+    Object? episodes = null,
+  }) {
+    return _then(_self.copyWith(
+      totalEpisodes: null == totalEpisodes
+          ? _self.totalEpisodes
+          : totalEpisodes // ignore: cast_nullable_to_non_nullable
+              as int,
+      episodes: null == episodes
+          ? _self.episodes
+          : episodes // ignore: cast_nullable_to_non_nullable
+              as List<EpisodeModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _EpisodeListResponse implements EpisodeListResponse {
+  _EpisodeListResponse(
+      {required this.totalEpisodes, required final List<EpisodeModel> episodes})
+      : _episodes = episodes;
+  factory _EpisodeListResponse.fromJson(Map<String, dynamic> json) =>
+      _$EpisodeListResponseFromJson(json);
+
+  @override
+  final int totalEpisodes;
+  final List<EpisodeModel> _episodes;
+  @override
+  List<EpisodeModel> get episodes {
+    if (_episodes is EqualUnmodifiableListView) return _episodes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_episodes);
+  }
+
+  /// Create a copy of EpisodeListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EpisodeListResponseCopyWith<_EpisodeListResponse> get copyWith =>
+      __$EpisodeListResponseCopyWithImpl<_EpisodeListResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$EpisodeListResponseToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _EpisodeListResponse &&
+            (identical(other.totalEpisodes, totalEpisodes) ||
+                other.totalEpisodes == totalEpisodes) &&
+            const DeepCollectionEquality().equals(other._episodes, _episodes));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, totalEpisodes,
+      const DeepCollectionEquality().hash(_episodes));
+
+  @override
+  String toString() {
+    return 'EpisodeListResponse(totalEpisodes: $totalEpisodes, episodes: $episodes)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$EpisodeListResponseCopyWith<$Res>
+    implements $EpisodeListResponseCopyWith<$Res> {
+  factory _$EpisodeListResponseCopyWith(_EpisodeListResponse value,
+          $Res Function(_EpisodeListResponse) _then) =
+      __$EpisodeListResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int totalEpisodes, List<EpisodeModel> episodes});
+}
+
+/// @nodoc
+class __$EpisodeListResponseCopyWithImpl<$Res>
+    implements _$EpisodeListResponseCopyWith<$Res> {
+  __$EpisodeListResponseCopyWithImpl(this._self, this._then);
+
+  final _EpisodeListResponse _self;
+  final $Res Function(_EpisodeListResponse) _then;
+
+  /// Create a copy of EpisodeListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? totalEpisodes = null,
+    Object? episodes = null,
+  }) {
+    return _then(_EpisodeListResponse(
+      totalEpisodes: null == totalEpisodes
+          ? _self.totalEpisodes
+          : totalEpisodes // ignore: cast_nullable_to_non_nullable
+              as int,
+      episodes: null == episodes
+          ? _self._episodes
+          : episodes // ignore: cast_nullable_to_non_nullable
+              as List<EpisodeModel>,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$EpisodeModel {
   @JsonKey(name: 'episode_no')
   int get episodeNo;
   String get id;
   String get title;
+  @JsonKey(name: 'japanese_title')
   String get japaneseTitle;
   bool get filler;
 
@@ -68,7 +240,7 @@ abstract mixin class $EpisodeModelCopyWith<$Res> {
       {@JsonKey(name: 'episode_no') int episodeNo,
       String id,
       String title,
-      String japaneseTitle,
+      @JsonKey(name: 'japanese_title') String japaneseTitle,
       bool filler});
 }
 
@@ -122,7 +294,7 @@ class _EpisodeModel implements EpisodeModel {
       {@JsonKey(name: 'episode_no') required this.episodeNo,
       required this.id,
       required this.title,
-      required this.japaneseTitle,
+      @JsonKey(name: 'japanese_title') required this.japaneseTitle,
       required this.filler});
   factory _EpisodeModel.fromJson(Map<String, dynamic> json) =>
       _$EpisodeModelFromJson(json);
@@ -135,6 +307,7 @@ class _EpisodeModel implements EpisodeModel {
   @override
   final String title;
   @override
+  @JsonKey(name: 'japanese_title')
   final String japaneseTitle;
   @override
   final bool filler;
@@ -191,7 +364,7 @@ abstract mixin class _$EpisodeModelCopyWith<$Res>
       {@JsonKey(name: 'episode_no') int episodeNo,
       String id,
       String title,
-      String japaneseTitle,
+      @JsonKey(name: 'japanese_title') String japaneseTitle,
       bool filler});
 }
 

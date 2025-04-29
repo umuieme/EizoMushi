@@ -14,26 +14,26 @@ part of 'streaming_info_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$StreamingInfo {
+mixin _$StreamingInfoModel {
   StreamingLink get streamingLink;
   List<Server> get servers;
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $StreamingInfoCopyWith<StreamingInfo> get copyWith =>
-      _$StreamingInfoCopyWithImpl<StreamingInfo>(
-          this as StreamingInfo, _$identity);
+  $StreamingInfoModelCopyWith<StreamingInfoModel> get copyWith =>
+      _$StreamingInfoModelCopyWithImpl<StreamingInfoModel>(
+          this as StreamingInfoModel, _$identity);
 
-  /// Serializes this StreamingInfo to a JSON map.
+  /// Serializes this StreamingInfoModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is StreamingInfo &&
+            other is StreamingInfoModel &&
             (identical(other.streamingLink, streamingLink) ||
                 other.streamingLink == streamingLink) &&
             const DeepCollectionEquality().equals(other.servers, servers));
@@ -46,15 +46,15 @@ mixin _$StreamingInfo {
 
   @override
   String toString() {
-    return 'StreamingInfo(streamingLink: $streamingLink, servers: $servers)';
+    return 'StreamingInfoModel(streamingLink: $streamingLink, servers: $servers)';
   }
 }
 
 /// @nodoc
-abstract mixin class $StreamingInfoCopyWith<$Res> {
-  factory $StreamingInfoCopyWith(
-          StreamingInfo value, $Res Function(StreamingInfo) _then) =
-      _$StreamingInfoCopyWithImpl;
+abstract mixin class $StreamingInfoModelCopyWith<$Res> {
+  factory $StreamingInfoModelCopyWith(
+          StreamingInfoModel value, $Res Function(StreamingInfoModel) _then) =
+      _$StreamingInfoModelCopyWithImpl;
   @useResult
   $Res call({StreamingLink streamingLink, List<Server> servers});
 
@@ -62,14 +62,14 @@ abstract mixin class $StreamingInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StreamingInfoCopyWithImpl<$Res>
-    implements $StreamingInfoCopyWith<$Res> {
-  _$StreamingInfoCopyWithImpl(this._self, this._then);
+class _$StreamingInfoModelCopyWithImpl<$Res>
+    implements $StreamingInfoModelCopyWith<$Res> {
+  _$StreamingInfoModelCopyWithImpl(this._self, this._then);
 
-  final StreamingInfo _self;
-  final $Res Function(StreamingInfo) _then;
+  final StreamingInfoModel _self;
+  final $Res Function(StreamingInfoModel) _then;
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -89,7 +89,7 @@ class _$StreamingInfoCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -102,12 +102,12 @@ class _$StreamingInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _StreamingInfo implements StreamingInfo {
-  const _StreamingInfo(
+class _StreamingInfoModel implements StreamingInfoModel {
+  const _StreamingInfoModel(
       {required this.streamingLink, required final List<Server> servers})
       : _servers = servers;
-  factory _StreamingInfo.fromJson(Map<String, dynamic> json) =>
-      _$StreamingInfoFromJson(json);
+  factory _StreamingInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$StreamingInfoModelFromJson(json);
 
   @override
   final StreamingLink streamingLink;
@@ -119,17 +119,17 @@ class _StreamingInfo implements StreamingInfo {
     return EqualUnmodifiableListView(_servers);
   }
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$StreamingInfoCopyWith<_StreamingInfo> get copyWith =>
-      __$StreamingInfoCopyWithImpl<_StreamingInfo>(this, _$identity);
+  _$StreamingInfoModelCopyWith<_StreamingInfoModel> get copyWith =>
+      __$StreamingInfoModelCopyWithImpl<_StreamingInfoModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$StreamingInfoToJson(
+    return _$StreamingInfoModelToJson(
       this,
     );
   }
@@ -138,7 +138,7 @@ class _StreamingInfo implements StreamingInfo {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _StreamingInfo &&
+            other is _StreamingInfoModel &&
             (identical(other.streamingLink, streamingLink) ||
                 other.streamingLink == streamingLink) &&
             const DeepCollectionEquality().equals(other._servers, _servers));
@@ -151,16 +151,16 @@ class _StreamingInfo implements StreamingInfo {
 
   @override
   String toString() {
-    return 'StreamingInfo(streamingLink: $streamingLink, servers: $servers)';
+    return 'StreamingInfoModel(streamingLink: $streamingLink, servers: $servers)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$StreamingInfoCopyWith<$Res>
-    implements $StreamingInfoCopyWith<$Res> {
-  factory _$StreamingInfoCopyWith(
-          _StreamingInfo value, $Res Function(_StreamingInfo) _then) =
-      __$StreamingInfoCopyWithImpl;
+abstract mixin class _$StreamingInfoModelCopyWith<$Res>
+    implements $StreamingInfoModelCopyWith<$Res> {
+  factory _$StreamingInfoModelCopyWith(
+          _StreamingInfoModel value, $Res Function(_StreamingInfoModel) _then) =
+      __$StreamingInfoModelCopyWithImpl;
   @override
   @useResult
   $Res call({StreamingLink streamingLink, List<Server> servers});
@@ -170,14 +170,14 @@ abstract mixin class _$StreamingInfoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$StreamingInfoCopyWithImpl<$Res>
-    implements _$StreamingInfoCopyWith<$Res> {
-  __$StreamingInfoCopyWithImpl(this._self, this._then);
+class __$StreamingInfoModelCopyWithImpl<$Res>
+    implements _$StreamingInfoModelCopyWith<$Res> {
+  __$StreamingInfoModelCopyWithImpl(this._self, this._then);
 
-  final _StreamingInfo _self;
-  final $Res Function(_StreamingInfo) _then;
+  final _StreamingInfoModel _self;
+  final $Res Function(_StreamingInfoModel) _then;
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -185,7 +185,7 @@ class __$StreamingInfoCopyWithImpl<$Res>
     Object? streamingLink = null,
     Object? servers = null,
   }) {
-    return _then(_StreamingInfo(
+    return _then(_StreamingInfoModel(
       streamingLink: null == streamingLink
           ? _self.streamingLink
           : streamingLink // ignore: cast_nullable_to_non_nullable
@@ -197,7 +197,7 @@ class __$StreamingInfoCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of StreamingInfo
+  /// Create a copy of StreamingInfoModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -734,7 +734,7 @@ mixin _$Track {
   String get file;
   String get kind;
   @JsonKey(name: 'default')
-  bool get isDefault;
+  bool? get isDefault;
   String? get label;
 
   /// Create a copy of Track
@@ -777,7 +777,7 @@ abstract mixin class $TrackCopyWith<$Res> {
   $Res call(
       {String file,
       String kind,
-      @JsonKey(name: 'default') bool isDefault,
+      @JsonKey(name: 'default') bool? isDefault,
       String? label});
 }
 
@@ -795,7 +795,7 @@ class _$TrackCopyWithImpl<$Res> implements $TrackCopyWith<$Res> {
   $Res call({
     Object? file = null,
     Object? kind = null,
-    Object? isDefault = null,
+    Object? isDefault = freezed,
     Object? label = freezed,
   }) {
     return _then(_self.copyWith(
@@ -807,10 +807,10 @@ class _$TrackCopyWithImpl<$Res> implements $TrackCopyWith<$Res> {
           ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
-      isDefault: null == isDefault
+      isDefault: freezed == isDefault
           ? _self.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       label: freezed == label
           ? _self.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -825,7 +825,7 @@ class _Track implements Track {
   const _Track(
       {required this.file,
       required this.kind,
-      @JsonKey(name: 'default') required this.isDefault,
+      @JsonKey(name: 'default') this.isDefault,
       this.label});
   factory _Track.fromJson(Map<String, dynamic> json) => _$TrackFromJson(json);
 
@@ -835,7 +835,7 @@ class _Track implements Track {
   final String kind;
   @override
   @JsonKey(name: 'default')
-  final bool isDefault;
+  final bool? isDefault;
   @override
   final String? label;
 
@@ -885,7 +885,7 @@ abstract mixin class _$TrackCopyWith<$Res> implements $TrackCopyWith<$Res> {
   $Res call(
       {String file,
       String kind,
-      @JsonKey(name: 'default') bool isDefault,
+      @JsonKey(name: 'default') bool? isDefault,
       String? label});
 }
 
@@ -903,7 +903,7 @@ class __$TrackCopyWithImpl<$Res> implements _$TrackCopyWith<$Res> {
   $Res call({
     Object? file = null,
     Object? kind = null,
-    Object? isDefault = null,
+    Object? isDefault = freezed,
     Object? label = freezed,
   }) {
     return _then(_Track(
@@ -915,10 +915,10 @@ class __$TrackCopyWithImpl<$Res> implements _$TrackCopyWith<$Res> {
           ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
-      isDefault: null == isDefault
+      isDefault: freezed == isDefault
           ? _self.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       label: freezed == label
           ? _self.label
           : label // ignore: cast_nullable_to_non_nullable
