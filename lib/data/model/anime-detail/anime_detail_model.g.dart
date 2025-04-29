@@ -9,10 +9,10 @@ part of 'anime_detail_model.dart';
 _AnimeDetailModel _$AnimeDetailModelFromJson(Map<String, dynamic> json) =>
     _AnimeDetailModel(
       adultContent: json['adultContent'] as bool,
-      dataId: json['dataId'] as String,
+      dataId: json['data_id'] as String,
       id: json['id'] as String,
       title: json['title'] as String,
-      japaneseTitle: json['japaneseTitle'] as String,
+      japaneseTitle: json['japanese_title'] as String,
       poster: json['poster'] as String,
       showType: json['showType'] as String,
       animeInfo:
@@ -22,10 +22,10 @@ _AnimeDetailModel _$AnimeDetailModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$AnimeDetailModelToJson(_AnimeDetailModel instance) =>
     <String, dynamic>{
       'adultContent': instance.adultContent,
-      'dataId': instance.dataId,
+      'data_id': instance.dataId,
       'id': instance.id,
       'title': instance.title,
-      'japaneseTitle': instance.japaneseTitle,
+      'japanese_title': instance.japaneseTitle,
       'poster': instance.poster,
       'showType': instance.showType,
       'animeInfo': instance.animeInfo,
@@ -35,17 +35,18 @@ _AnimeInfoModel _$AnimeInfoModelFromJson(Map<String, dynamic> json) =>
     _AnimeInfoModel(
       overview: json['Overview'] as String,
       japanese: json['Japanese'] as String,
-      synonyms: json['Synonyms'] as String,
-      aired: json['Aired'] as String,
-      premiered: json['Premiered'] as String,
-      duration: json['Duration'] as String,
-      status: json['Status'] as String,
-      malScore: json['MAL Score'] as String,
+      synonyms: json['Synonyms'] as String?,
+      aired: json['Aired'] as String?,
+      premiered: json['Premiered'] as String?,
+      duration: json['Duration'] as String?,
+      status: json['Status'] as String?,
+      malScore: json['MAL Score'] as String?,
       genres:
-          (json['Genres'] as List<dynamic>).map((e) => e as String).toList(),
-      studios: json['Studios'] as String,
-      producers:
-          (json['Producers'] as List<dynamic>).map((e) => e as String).toList(),
+          (json['Genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      studios: json['Studios'] as String?,
+      producers: (json['Producers'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       tvInfo: TvInfoModel.fromJson(json['tvInfo'] as Map<String, dynamic>),
     );
 

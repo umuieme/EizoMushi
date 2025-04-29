@@ -16,9 +16,11 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AnimeDetailModel {
   bool get adultContent;
+  @JsonKey(name: 'data_id')
   String get dataId;
   String get id;
   String get title;
+  @JsonKey(name: 'japanese_title')
   String get japaneseTitle;
   String get poster;
   String get showType;
@@ -73,10 +75,10 @@ abstract mixin class $AnimeDetailModelCopyWith<$Res> {
   @useResult
   $Res call(
       {bool adultContent,
-      String dataId,
+      @JsonKey(name: 'data_id') String dataId,
       String id,
       String title,
-      String japaneseTitle,
+      @JsonKey(name: 'japanese_title') String japaneseTitle,
       String poster,
       String showType,
       AnimeInfoModel animeInfo});
@@ -158,10 +160,10 @@ class _$AnimeDetailModelCopyWithImpl<$Res>
 class _AnimeDetailModel implements AnimeDetailModel {
   const _AnimeDetailModel(
       {required this.adultContent,
-      required this.dataId,
+      @JsonKey(name: 'data_id') required this.dataId,
       required this.id,
       required this.title,
-      required this.japaneseTitle,
+      @JsonKey(name: 'japanese_title') required this.japaneseTitle,
       required this.poster,
       required this.showType,
       required this.animeInfo});
@@ -171,12 +173,14 @@ class _AnimeDetailModel implements AnimeDetailModel {
   @override
   final bool adultContent;
   @override
+  @JsonKey(name: 'data_id')
   final String dataId;
   @override
   final String id;
   @override
   final String title;
   @override
+  @JsonKey(name: 'japanese_title')
   final String japaneseTitle;
   @override
   final String poster;
@@ -240,10 +244,10 @@ abstract mixin class _$AnimeDetailModelCopyWith<$Res>
   @useResult
   $Res call(
       {bool adultContent,
-      String dataId,
+      @JsonKey(name: 'data_id') String dataId,
       String id,
       String title,
-      String japaneseTitle,
+      @JsonKey(name: 'japanese_title') String japaneseTitle,
       String poster,
       String showType,
       AnimeInfoModel animeInfo});
@@ -328,23 +332,23 @@ mixin _$AnimeInfoModel {
   @JsonKey(name: 'Japanese')
   String get japanese;
   @JsonKey(name: 'Synonyms')
-  String get synonyms;
+  String? get synonyms;
   @JsonKey(name: 'Aired')
-  String get aired;
+  String? get aired;
   @JsonKey(name: 'Premiered')
-  String get premiered;
+  String? get premiered;
   @JsonKey(name: 'Duration')
-  String get duration;
+  String? get duration;
   @JsonKey(name: 'Status')
-  String get status;
+  String? get status;
   @JsonKey(name: 'MAL Score')
-  String get malScore;
+  String? get malScore;
   @JsonKey(name: 'Genres')
-  List<String> get genres;
+  List<String>? get genres;
   @JsonKey(name: 'Studios')
-  String get studios;
+  String? get studios;
   @JsonKey(name: 'Producers')
-  List<String> get producers;
+  List<String>? get producers;
   TvInfoModel get tvInfo;
 
   /// Create a copy of AnimeInfoModel
@@ -415,15 +419,15 @@ abstract mixin class $AnimeInfoModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'Overview') String overview,
       @JsonKey(name: 'Japanese') String japanese,
-      @JsonKey(name: 'Synonyms') String synonyms,
-      @JsonKey(name: 'Aired') String aired,
-      @JsonKey(name: 'Premiered') String premiered,
-      @JsonKey(name: 'Duration') String duration,
-      @JsonKey(name: 'Status') String status,
-      @JsonKey(name: 'MAL Score') String malScore,
-      @JsonKey(name: 'Genres') List<String> genres,
-      @JsonKey(name: 'Studios') String studios,
-      @JsonKey(name: 'Producers') List<String> producers,
+      @JsonKey(name: 'Synonyms') String? synonyms,
+      @JsonKey(name: 'Aired') String? aired,
+      @JsonKey(name: 'Premiered') String? premiered,
+      @JsonKey(name: 'Duration') String? duration,
+      @JsonKey(name: 'Status') String? status,
+      @JsonKey(name: 'MAL Score') String? malScore,
+      @JsonKey(name: 'Genres') List<String>? genres,
+      @JsonKey(name: 'Studios') String? studios,
+      @JsonKey(name: 'Producers') List<String>? producers,
       TvInfoModel tvInfo});
 
   $TvInfoModelCopyWith<$Res> get tvInfo;
@@ -444,15 +448,15 @@ class _$AnimeInfoModelCopyWithImpl<$Res>
   $Res call({
     Object? overview = null,
     Object? japanese = null,
-    Object? synonyms = null,
-    Object? aired = null,
-    Object? premiered = null,
-    Object? duration = null,
-    Object? status = null,
-    Object? malScore = null,
-    Object? genres = null,
-    Object? studios = null,
-    Object? producers = null,
+    Object? synonyms = freezed,
+    Object? aired = freezed,
+    Object? premiered = freezed,
+    Object? duration = freezed,
+    Object? status = freezed,
+    Object? malScore = freezed,
+    Object? genres = freezed,
+    Object? studios = freezed,
+    Object? producers = freezed,
     Object? tvInfo = null,
   }) {
     return _then(_self.copyWith(
@@ -464,42 +468,42 @@ class _$AnimeInfoModelCopyWithImpl<$Res>
           ? _self.japanese
           : japanese // ignore: cast_nullable_to_non_nullable
               as String,
-      synonyms: null == synonyms
+      synonyms: freezed == synonyms
           ? _self.synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
-              as String,
-      aired: null == aired
+              as String?,
+      aired: freezed == aired
           ? _self.aired
           : aired // ignore: cast_nullable_to_non_nullable
-              as String,
-      premiered: null == premiered
+              as String?,
+      premiered: freezed == premiered
           ? _self.premiered
           : premiered // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      malScore: null == malScore
+              as String?,
+      malScore: freezed == malScore
           ? _self.malScore
           : malScore // ignore: cast_nullable_to_non_nullable
-              as String,
-      genres: null == genres
+              as String?,
+      genres: freezed == genres
           ? _self.genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      studios: null == studios
+              as List<String>?,
+      studios: freezed == studios
           ? _self.studios
           : studios // ignore: cast_nullable_to_non_nullable
-              as String,
-      producers: null == producers
+              as String?,
+      producers: freezed == producers
           ? _self.producers
           : producers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       tvInfo: null == tvInfo
           ? _self.tvInfo
           : tvInfo // ignore: cast_nullable_to_non_nullable
@@ -530,9 +534,9 @@ class _AnimeInfoModel implements AnimeInfoModel {
       @JsonKey(name: 'Duration') required this.duration,
       @JsonKey(name: 'Status') required this.status,
       @JsonKey(name: 'MAL Score') required this.malScore,
-      @JsonKey(name: 'Genres') required final List<String> genres,
+      @JsonKey(name: 'Genres') required final List<String>? genres,
       @JsonKey(name: 'Studios') required this.studios,
-      @JsonKey(name: 'Producers') required final List<String> producers,
+      @JsonKey(name: 'Producers') required final List<String>? producers,
       required this.tvInfo})
       : _genres = genres,
         _producers = producers;
@@ -547,41 +551,45 @@ class _AnimeInfoModel implements AnimeInfoModel {
   final String japanese;
   @override
   @JsonKey(name: 'Synonyms')
-  final String synonyms;
+  final String? synonyms;
   @override
   @JsonKey(name: 'Aired')
-  final String aired;
+  final String? aired;
   @override
   @JsonKey(name: 'Premiered')
-  final String premiered;
+  final String? premiered;
   @override
   @JsonKey(name: 'Duration')
-  final String duration;
+  final String? duration;
   @override
   @JsonKey(name: 'Status')
-  final String status;
+  final String? status;
   @override
   @JsonKey(name: 'MAL Score')
-  final String malScore;
-  final List<String> _genres;
+  final String? malScore;
+  final List<String>? _genres;
   @override
   @JsonKey(name: 'Genres')
-  List<String> get genres {
+  List<String>? get genres {
+    final value = _genres;
+    if (value == null) return null;
     if (_genres is EqualUnmodifiableListView) return _genres;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genres);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey(name: 'Studios')
-  final String studios;
-  final List<String> _producers;
+  final String? studios;
+  final List<String>? _producers;
   @override
   @JsonKey(name: 'Producers')
-  List<String> get producers {
+  List<String>? get producers {
+    final value = _producers;
+    if (value == null) return null;
     if (_producers is EqualUnmodifiableListView) return _producers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_producers);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -662,15 +670,15 @@ abstract mixin class _$AnimeInfoModelCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'Overview') String overview,
       @JsonKey(name: 'Japanese') String japanese,
-      @JsonKey(name: 'Synonyms') String synonyms,
-      @JsonKey(name: 'Aired') String aired,
-      @JsonKey(name: 'Premiered') String premiered,
-      @JsonKey(name: 'Duration') String duration,
-      @JsonKey(name: 'Status') String status,
-      @JsonKey(name: 'MAL Score') String malScore,
-      @JsonKey(name: 'Genres') List<String> genres,
-      @JsonKey(name: 'Studios') String studios,
-      @JsonKey(name: 'Producers') List<String> producers,
+      @JsonKey(name: 'Synonyms') String? synonyms,
+      @JsonKey(name: 'Aired') String? aired,
+      @JsonKey(name: 'Premiered') String? premiered,
+      @JsonKey(name: 'Duration') String? duration,
+      @JsonKey(name: 'Status') String? status,
+      @JsonKey(name: 'MAL Score') String? malScore,
+      @JsonKey(name: 'Genres') List<String>? genres,
+      @JsonKey(name: 'Studios') String? studios,
+      @JsonKey(name: 'Producers') List<String>? producers,
       TvInfoModel tvInfo});
 
   @override
@@ -692,15 +700,15 @@ class __$AnimeInfoModelCopyWithImpl<$Res>
   $Res call({
     Object? overview = null,
     Object? japanese = null,
-    Object? synonyms = null,
-    Object? aired = null,
-    Object? premiered = null,
-    Object? duration = null,
-    Object? status = null,
-    Object? malScore = null,
-    Object? genres = null,
-    Object? studios = null,
-    Object? producers = null,
+    Object? synonyms = freezed,
+    Object? aired = freezed,
+    Object? premiered = freezed,
+    Object? duration = freezed,
+    Object? status = freezed,
+    Object? malScore = freezed,
+    Object? genres = freezed,
+    Object? studios = freezed,
+    Object? producers = freezed,
     Object? tvInfo = null,
   }) {
     return _then(_AnimeInfoModel(
@@ -712,42 +720,42 @@ class __$AnimeInfoModelCopyWithImpl<$Res>
           ? _self.japanese
           : japanese // ignore: cast_nullable_to_non_nullable
               as String,
-      synonyms: null == synonyms
+      synonyms: freezed == synonyms
           ? _self.synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
-              as String,
-      aired: null == aired
+              as String?,
+      aired: freezed == aired
           ? _self.aired
           : aired // ignore: cast_nullable_to_non_nullable
-              as String,
-      premiered: null == premiered
+              as String?,
+      premiered: freezed == premiered
           ? _self.premiered
           : premiered // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      malScore: null == malScore
+              as String?,
+      malScore: freezed == malScore
           ? _self.malScore
           : malScore // ignore: cast_nullable_to_non_nullable
-              as String,
-      genres: null == genres
+              as String?,
+      genres: freezed == genres
           ? _self._genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      studios: null == studios
+              as List<String>?,
+      studios: freezed == studios
           ? _self.studios
           : studios // ignore: cast_nullable_to_non_nullable
-              as String,
-      producers: null == producers
+              as String?,
+      producers: freezed == producers
           ? _self._producers
           : producers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       tvInfo: null == tvInfo
           ? _self.tvInfo
           : tvInfo // ignore: cast_nullable_to_non_nullable

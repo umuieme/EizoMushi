@@ -1,12 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eizo_mushi/app/theme/app_colors.dart';
 import 'package:eizo_mushi/app/utils/context_extension.dart';
-import 'package:eizo_mushi/data/dummy_model.dart';
+import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/features/anime-detail/ui/screen/anime_detail_screen.dart';
+import 'package:eizo_mushi/features/common/widgets/app_image_view.dart';
 import 'package:flutter/material.dart';
 
 class CarouselItem extends StatelessWidget {
-  const CarouselItem({super.key});
+  const CarouselItem({
+    required this.animeInfo,
+    required this.position,
+    super.key,
+  });
+  final AnimeInfoHomeModel animeInfo;
+  final int position;
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +21,15 @@ class CarouselItem extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) => AnimeDetailPage(
-            anime: Dummy.getAnimeDetail(),
+            animeBasicInfo: animeInfo,
           ),
         ),
       ),
       child: Stack(
         children: [
-          CachedNetworkImage(
-            imageUrl:
-                'https://pics.craiyon.com/2023-10-08/2ee090303b604285a0163ff275be9c6d.webp',
+          AppImageView(
+            imageUrl: animeInfo.poster,
             fit: BoxFit.cover,
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
           Positioned(
             bottom: 0,
@@ -52,7 +54,7 @@ class CarouselItem extends StatelessWidget {
                     height: 100,
                   ),
                   Text(
-                    '#1 Spotlight',
+                    '#$position Spotlight',
                     style: context.textTheme.bodySmall?.copyWith(
                       color: AppColor.warning,
                     ),
@@ -61,7 +63,7 @@ class CarouselItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'One Piece',
+                          animeInfo.title,
                           style: context.textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w800,
                             color: Colors.white,

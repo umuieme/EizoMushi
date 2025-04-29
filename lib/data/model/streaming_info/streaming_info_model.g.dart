@@ -6,8 +6,8 @@ part of 'streaming_info_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_StreamingInfo _$StreamingInfoFromJson(Map<String, dynamic> json) =>
-    _StreamingInfo(
+_StreamingInfoModel _$StreamingInfoModelFromJson(Map<String, dynamic> json) =>
+    _StreamingInfoModel(
       streamingLink:
           StreamingLink.fromJson(json['streamingLink'] as Map<String, dynamic>),
       servers: (json['servers'] as List<dynamic>)
@@ -15,7 +15,7 @@ _StreamingInfo _$StreamingInfoFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$StreamingInfoToJson(_StreamingInfo instance) =>
+Map<String, dynamic> _$StreamingInfoModelToJson(_StreamingInfoModel instance) =>
     <String, dynamic>{
       'streamingLink': instance.streamingLink,
       'servers': instance.servers,
@@ -59,16 +59,16 @@ Map<String, dynamic> _$LinkToJson(_Link instance) => <String, dynamic>{
 
 _Track _$TrackFromJson(Map<String, dynamic> json) => _Track(
       file: json['file'] as String,
-      label: json['label'] as String?,
       kind: json['kind'] as String,
-      isDefault: json['default'] as bool,
+      isDefault: json['default'] as bool?,
+      label: json['label'] as String?,
     );
 
 Map<String, dynamic> _$TrackToJson(_Track instance) => <String, dynamic>{
       'file': instance.file,
-      'label': instance.label,
       'kind': instance.kind,
       'default': instance.isDefault,
+      'label': instance.label,
     };
 
 _TimeRange _$TimeRangeFromJson(Map<String, dynamic> json) => _TimeRange(
