@@ -1,4 +1,4 @@
-import 'package:eizo_mushi/app/utils/context_extension.dart';
+import 'package:eizo_mushi/app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppLoading extends StatelessWidget {
@@ -13,7 +13,7 @@ class AppLoading extends StatelessWidget {
       height: size ?? 32,
       width: size ?? 32,
       child: CircularProgressIndicator(
-        color: color ?? context.primaryColor,
+        color: color ?? AppColor.primary,
       ),
     );
     if (isCenter) {

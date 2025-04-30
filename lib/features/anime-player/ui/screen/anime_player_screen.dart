@@ -24,16 +24,7 @@ class AnimePlayerScreen extends StatelessWidget {
           create: (context) => getIt<StreamingInfoBloc>(param1: animeId),
         ),
       ],
-      child: BlocListener<EpisodeListBloc, EpisodeListState>(
-        listener: (context, state) {
-          if (state is EpisodeListLoadSuccess) {
-            context.read<StreamingInfoBloc>().add(
-                  StreamingInfoFetch(episodeId: state.data.episodes.first.id),
-                );
-          }
-        },
-        child: const AnimePlayerBody(),
-      ),
+      child: const AnimePlayerBody(),
     );
   }
 }

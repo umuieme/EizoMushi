@@ -22,8 +22,12 @@ class EpisodeListLoadFailure extends EpisodeListState {
 }
 
 class EpisodeListLoadSuccess extends EpisodeListState {
-  const EpisodeListLoadSuccess({required this.data});
+  const EpisodeListLoadSuccess({
+    required this.data,
+    required this.animeId,
+  });
   final EpisodeListResponse data;
+  final String animeId;
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [data, animeId];
 }

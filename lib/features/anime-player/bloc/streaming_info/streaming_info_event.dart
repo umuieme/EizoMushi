@@ -6,9 +6,9 @@ abstract class StreamingInfoEvent extends Equatable {
 
 class StreamingInfoFetch extends StreamingInfoEvent {
   const StreamingInfoFetch({
-    required this.episodeId,
+    required this.episode,
   });
-  final String episodeId;
+  final EpisodeModel episode;
   @override
-  List<Object?> get props => [episodeId];
+  List<Object?> get props => [episode];
 }

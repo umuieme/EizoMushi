@@ -22,8 +22,12 @@ class StreamingInfoLoadFailure extends StreamingInfoState {
 }
 
 class StreamingInfoLoadSuccess extends StreamingInfoState {
-  const StreamingInfoLoadSuccess({required this.data});
+  const StreamingInfoLoadSuccess({
+    required this.data,
+    required this.episodeModel,
+  });
   final StreamingInfoModel data;
+  final EpisodeModel episodeModel;
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [data, episodeModel];
 }

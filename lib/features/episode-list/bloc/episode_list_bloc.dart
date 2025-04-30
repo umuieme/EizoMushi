@@ -26,7 +26,7 @@ class EpisodeListBloc extends Bloc<EpisodeListEvent, EpisodeListState> {
         emit(EpisodeListLoadFailure(message: error.message));
       },
       (data) {
-        emit(EpisodeListLoadSuccess(data: data));
+        emit(EpisodeListLoadSuccess(data: data, animeId: event.animeId));
       },
     );
   }

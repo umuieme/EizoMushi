@@ -1,39 +1,38 @@
-// import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
+import 'package:eizo_mushi/data/model/episode/episode_model.dart';
+import 'package:video_player/video_player.dart';
 
-// class VideoState {
-//   VideoState._({
-//     required this.controller,
-//     required this.loaded,
-//   });
+class VideoPlayerState {
+  VideoPlayerState._({
+    required this.controller,
+    required this.chewieController,
+    required this.loaded,
+    required this.episodeModel,
+  });
+  VideoPlayerState.init()
+      : controller = null,
+        chewieController = null,
+        episodeModel = null,
+        loaded = false;
 
-//   factory VideoState.initialize({
-//     required String url,
-//   }) {
-//     final controller = VideoPlayerController.network(
-//       url,
-//     );
-//     return VideoState._(
-//       controller: controller,
-//       loaded: false,
-//     );
-//   }
+  final VideoPlayerController? controller;
+  final ChewieController? chewieController;
+  final EpisodeModel? episodeModel;
+  final bool loaded;
 
-//   final VideoPlayerController controller;
-//   final bool loaded;
+  bool get notLoaded => !loaded;
 
-//   bool get notLoaded => !loaded;
-
-//   VideoState copyWith({
-//     VideoPlayerController? controller,
-//     bool? loaded,
-//   }) {
-//     return VideoState._(
-//       controller: controller ?? this.controller,
-//       loaded: loaded ?? this.loaded,
-//     );
-//   }
-
-//   Future<void> dispose() async {
-//     controller.dispose();
-//   }
-// }
+  VideoPlayerState copyWith({
+    VideoPlayerController? controller,
+    ChewieController? chewieController,
+    EpisodeModel? episodeModel,
+    bool? loaded,
+  }) {
+    return VideoPlayerState._(
+      controller: controller ?? this.controller,
+      loaded: loaded ?? this.loaded,
+      chewieController: chewieController ?? this.chewieController,
+      episodeModel: episodeModel ?? this.episodeModel,
+    );
+  }
+}
