@@ -1,6 +1,8 @@
+import 'package:eizo_mushi/app/theme/app_colors.dart';
 import 'package:eizo_mushi/app/utils/context_extension.dart';
 import 'package:eizo_mushi/data/model/episode/episode_model.dart';
-import 'package:eizo_mushi/features/anime-player/bloc/streaming_info/streaming_info_bloc.dart';
+import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_cubit.dart';
+import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_state.dart';
 import 'package:eizo_mushi/features/common/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,72 +28,69 @@ class EpisodeListView extends HookWidget {
       },
       [episodeList, query.value],
     );
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 20,
-        children: [
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_left_rounded),
-                padding: EdgeInsets.zero,
-                iconSize: 48,
-                onPressed: () {
-                  pageController.previousPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                },
-              ),
-              Expanded(
-                child: AppTextField(
-                  hint: 'Episode No',
-                  hintStyle: context.textTheme.bodyMedium,
-                  inputTextStyle: context.textTheme.bodyMedium,
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    size: 24,
-                  ),
-                  onChanged: (p0) => query.value = p0!,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.arrow_right_rounded),
-                iconSize: 48,
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                },
-              ),
-            ],
-          ),
-          Expanded(
-            child: PageView.builder(
-              controller: pageController,
-              physics: const ClampingScrollPhysics(),
-              itemCount: (currentItems.length / 50).ceil(),
-              itemBuilder: (context, index) {
-                final startValue = _itemPerPage * index;
-                final items = currentItems
-                    .skip(startValue)
-                    .take(_itemPerPage)
-                    .toList(growable: false);
-                return _EpisodeGridView(
-                  episodeList: items,
-                  onPressed: (episode) => context
-                      .read<StreamingInfoBloc>()
-                      .add(StreamingInfoFetch(episode: episode)),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 20,
+      children: [
+        Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.arrow_left_rounded),
+              padding: EdgeInsets.zero,
+              iconSize: 48,
+              onPressed: () {
+                pageController.previousPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
                 );
               },
             ),
+            Expanded(
+              child: AppTextField(
+                hint: 'Episode No',
+                hintStyle: context.textTheme.bodyMedium,
+                inputTextStyle: context.textTheme.bodyMedium,
+                contentPadding: EdgeInsets.zero,
+                prefixIcon: const Icon(
+                  Icons.search,
+                  size: 24,
+                ),
+                onChanged: (p0) => query.value = p0!,
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.arrow_right_rounded),
+              iconSize: 48,
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
+          ],
+        ),
+        Expanded(
+          child: PageView.builder(
+            controller: pageController,
+            physics: const ClampingScrollPhysics(),
+            itemCount: (currentItems.length / 50).ceil(),
+            itemBuilder: (context, index) {
+              final startValue = _itemPerPage * index;
+              final items = currentItems
+                  .skip(startValue)
+                  .take(_itemPerPage)
+                  .toList(growable: false);
+              return _EpisodeGridView(
+                episodeList: items,
+                onPressed: (episode) =>
+                    context.read<VideoPlayerCubit>().setEpisode(episode),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -122,20 +121,28 @@ class _EpisodeGridView extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         final episode = episodeList[index];
-        return InkWell(
-          onTap: () => onPressed(episode),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Text(
-                episode.episodeNo.toString(),
-                style: context.textTheme.titleMedium,
+        return BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+          builder: (context, state) {
+            final isPlaying = episode.id == state.episodeModel?.id;
+            return InkWell(
+              onTap: () => onPressed(episode),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: isPlaying ? AppColor.primary : Colors.transparent,
+                  border: isPlaying
+                      ? const Border()
+                      : Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    episode.episodeNo.toString(),
+                    style: context.textTheme.titleMedium,
+                  ),
+                ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );

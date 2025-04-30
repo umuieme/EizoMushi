@@ -79,6 +79,7 @@ class AnimeHorizItem extends StatelessWidget {
               child: Hero(
                 tag: '${anime.id}-title',
                 child: Material(
+                  color: Colors.transparent,
                   child: Text(
                     anime.title,
                     style: context.textTheme.titleLarge,

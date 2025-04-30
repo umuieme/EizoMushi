@@ -55,6 +55,7 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark,
         seedColor: AppColor.primary,
+        primary: AppColor.primary,
       ),
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,

@@ -49,6 +49,7 @@ class AnimeDetailPage extends StatelessWidget {
                             Hero(
                               tag: '${animeBasicInfo.id}-title',
                               child: Material(
+                                color: Colors.transparent,
                                 child: Text(
                                   animeBasicInfo.title,
                                   style: const TextStyle(

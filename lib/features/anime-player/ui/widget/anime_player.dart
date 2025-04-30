@@ -14,13 +14,12 @@ class AnimePlayer extends StatelessWidget {
       builder: (context, state) {
         if (state.notLoaded) {
           return const AspectRatio(
-            aspectRatio: 4 / 3,
+            aspectRatio: 16 / 9,
             child: AppLoading(
               color: Colors.blue,
             ),
           );
         }
-
         return AspectRatio(
           aspectRatio: state.controller!.value.aspectRatio,
           child: Chewie(controller: state.chewieController!),

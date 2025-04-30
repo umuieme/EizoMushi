@@ -1,3 +1,4 @@
+import 'package:eizo_mushi/app/di/di.dart';
 import 'package:eizo_mushi/app/utils/context_extension.dart';
 import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_cubit.dart';
 import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_state.dart';
@@ -27,26 +28,34 @@ class AnimePlayerBody extends StatelessWidget {
           }
 
           if (state is EpisodeListLoadSuccess) {
-            return Column(
-              spacing: 8,
-              children: [
-                const AnimePlayer(),
-                BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
-                  builder: (context, state) {
-                    if (state.episodeModel == null) {
-                      return const SizedBox.shrink();
-                    }
-                    final episode = state.episodeModel!;
-                    return Text(
-                      'Ep ${episode.episodeNo}: ${episode.title}',
-                      style: context.textTheme.titleMedium,
-                    );
-                  },
-                ),
-                Expanded(
-                  child: EpisodeListView(episodeList: state.data.episodes),
-                ),
-              ],
+            return BlocProvider(
+              create: (context) => getIt<VideoPlayerCubit>(
+                param1: state.animeId,
+                param2: state.data.episodes,
+              ),
+              child: Column(
+                spacing: 8,
+                children: [
+                  const AnimePlayer(),
+                  BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+                    builder: (context, state) {
+                      if (state.episodeModel == null) {
+                        return const SizedBox.shrink();
+                      }
+                      final episode = state.episodeModel!;
+                      return Text(
+                        'Ep ${episode.episodeNo}: ${episode.title}',
+                        style: context.textTheme.titleMedium,
+                      );
+                    },
+                  ),
+                  Expanded(
+                    child: EpisodeListView(
+                      episodeList: state.data.episodes,
+                    ),
+                  ),
+                ],
+              ),
             );
           }
 

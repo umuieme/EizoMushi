@@ -1,5 +1,8 @@
+import 'dart:collection';
+
 import 'package:eizo_mushi/data/api/api_service.dart';
 import 'package:eizo_mushi/data/api/dio_helper.dart';
+import 'package:eizo_mushi/data/model/episode/episode_model.dart';
 import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/data/repository/anime_repository.dart';
 import 'package:eizo_mushi/features/anime-detail/bloc/anime_detail_bloc.dart';
@@ -32,9 +35,11 @@ void setupDi() {
       (param, _) =>
           StreamingInfoBloc(repository: getIt(), animeId: param! as String),
     )
-    ..registerFactory(
-      () => VideoPlayerCubit(
+    ..registerFactoryParam(
+      (animeId, episodeList) => VideoPlayerCubit(
         animeRepository: getIt(),
+        animeId: animeId! as String,
+        episodeList: episodeList! as UnmodifiableListView<EpisodeModel>,
       ),
     );
 }
