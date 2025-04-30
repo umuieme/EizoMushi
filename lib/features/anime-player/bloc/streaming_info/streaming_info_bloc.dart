@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:eizo_mushi/data/model/episode/episode_model.dart';
 import 'package:eizo_mushi/data/model/streaming_info/streaming_info_model.dart';
 import 'package:eizo_mushi/data/repository/anime_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -23,7 +24,7 @@ class StreamingInfoBloc extends Bloc<StreamingInfoEvent, StreamingInfoState> {
     emit(StreamingInfoLoadInProgress());
     final response = await repository.fetchStreamingInfo(
       animeId: animeId,
-      episodeId: event.episodeId,
+      episodeId: event.episode.id,
     );
     response.fold(
       (error) {
@@ -31,7 +32,7 @@ class StreamingInfoBloc extends Bloc<StreamingInfoEvent, StreamingInfoState> {
         emit(StreamingInfoLoadFailure(message: error.message));
       },
       (data) {
-        emit(StreamingInfoLoadSuccess(data: data));
+        emit(StreamingInfoLoadSuccess(data: data, episodeModel: event.episode));
       },
     );
   }
