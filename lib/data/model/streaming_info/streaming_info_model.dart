@@ -27,8 +27,17 @@ abstract class StreamingLink with _$StreamingLink {
     required String iframe,
   }) = _StreamingLink;
 
+  const StreamingLink._();
+
   factory StreamingLink.fromJson(Map<String, dynamic> json) =>
       _$StreamingLinkFromJson(json);
+
+  Track getDefaultTrack() {
+    return tracks.firstWhere(
+      (track) => track.kind == 'captions' && (track.isDefault ?? false),
+      orElse: () => tracks.first,
+    );
+  }
 }
 
 @freezed

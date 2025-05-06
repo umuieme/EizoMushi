@@ -28,6 +28,7 @@ dependencies:
   json_annotation: ^4.9.0
   path_provider: ^2.1.5
   smooth_page_indicator: ^1.2.1
+  subtitle: ^0.1.4
   video_player: ^2.9.5
 
 dev_dependencies:

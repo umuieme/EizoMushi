@@ -376,7 +376,7 @@ class _$StreamingLinkCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _StreamingLink implements StreamingLink {
+class _StreamingLink extends StreamingLink {
   const _StreamingLink(
       {required this.id,
       required this.type,
@@ -386,7 +386,8 @@ class _StreamingLink implements StreamingLink {
       required this.outro,
       required this.server,
       required this.iframe})
-      : _tracks = tracks;
+      : _tracks = tracks,
+        super._();
   factory _StreamingLink.fromJson(Map<String, dynamic> json) =>
       _$StreamingLinkFromJson(json);
 
