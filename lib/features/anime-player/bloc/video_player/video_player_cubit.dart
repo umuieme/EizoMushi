@@ -37,6 +37,7 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
       animeId: animeId,
       episodeId: episode.id,
     );
+
     await result.fold(
       (l) {},
       (r) => _initializeVideo(r, autoPlay),

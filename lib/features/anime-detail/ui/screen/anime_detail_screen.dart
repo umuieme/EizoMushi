@@ -7,18 +7,23 @@ import 'package:eizo_mushi/features/anime-detail/bloc/anime_detail_bloc.dart';
 import 'package:eizo_mushi/features/anime-detail/ui/widgets/anime_detail_overview.dart';
 import 'package:eizo_mushi/features/anime-player/ui/screen/anime_player_screen.dart';
 import 'package:eizo_mushi/features/common/widgets/primary_button.dart';
+import 'package:eizo_mushi/features/library/bloc/favorite_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AnimeDetailPage extends StatelessWidget {
-  const AnimeDetailPage({required this.animeBasicInfo, super.key});
+class AnimeDetailScreen extends StatelessWidget {
+  const AnimeDetailScreen({required this.animeBasicInfo, super.key});
   final AnimeInfoHomeModel animeBasicInfo;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AnimeDetailBloc>(param1: animeBasicInfo)
-        ..add(AnimeDetailFetch()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<AnimeDetailBloc>(param1: animeBasicInfo)
+            ..add(AnimeDetailFetch()),
+        ),
+      ],
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -28,6 +33,24 @@ class AnimeDetailPage extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.of(context).pop(),
           ),
+          actions: [
+            BlocBuilder<FavoriteBloc, FavoriteState>(
+              buildWhen: (previous, current) => current is FavoriteLoadSuccess,
+              builder: (context, state) {
+                final isFavorite = state is FavoriteLoadSuccess &&
+                    state.data.containsKey(animeBasicInfo.id);
+                return IconButton(
+                  icon:
+                      Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+                  onPressed: () {
+                    context
+                        .read<FavoriteBloc>()
+                        .add(FavoriteUpdate(anime: animeBasicInfo));
+                  },
+                );
+              },
+            ),
+          ],
         ),
         body: BlocBuilder<AnimeDetailBloc, AnimeDetailState>(
           builder: (context, state) {
@@ -38,7 +61,7 @@ class AnimeDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Hero(
-                        tag: '${animeBasicInfo.id}-image',
+                        tag: '//${animeBasicInfo.id}-image',
                         child: _AnimePoster(posterUrl: animeBasicInfo.poster),
                       ),
                       Padding(
@@ -110,21 +133,25 @@ class AnimeDetailInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppPrimaryButton(
-          expanded: false,
-          title: 'Play',
-          onPressed: () {
-            Navigator.push<void>(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AnimePlayerScreen(
-                  animeId: anime.dataId,
-                ),
-              ),
-            );
-          },
-          icon: const Icon(Icons.play_arrow),
-          iconPosition: IconPosition.right,
+        Row(
+          children: [
+            AppPrimaryButton(
+              expanded: false,
+              title: 'Play',
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AnimePlayerScreen(
+                      animeId: anime.dataId,
+                    ),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.play_arrow),
+              iconPosition: IconPosition.right,
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         Wrap(

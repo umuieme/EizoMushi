@@ -23,7 +23,7 @@ abstract class AnimeInfoHomeModel with _$AnimeInfoHomeModel {
     required String title,
     @JsonKey(name: 'japanese_title') required String japaneseTitle,
     required String description,
-    required TvInfoModel? tvInfo,
+    TvInfoModel? tvInfo,
   }) = _AnimeInfoHomeModel;
 
   factory AnimeInfoHomeModel.fromJson(Map<String, dynamic> json) =>
