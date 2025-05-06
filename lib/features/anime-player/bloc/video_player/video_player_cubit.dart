@@ -7,6 +7,7 @@ import 'package:eizo_mushi/data/repository/anime_repository.dart';
 import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_state.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:subtitle/subtitle.dart' hide Subtitle;
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerCubit extends Cubit<VideoPlayerState> {
@@ -22,6 +23,8 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
   EpisodeModel? episodeModel;
+  SubtitleController? subtitleController;
+
   final UnmodifiableListView<EpisodeModel> episodeList;
   String animeId;
 
@@ -66,6 +69,12 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     _chewieController?.dispose();
 
     await _videoPlayerController?.dispose();
+    await subtitleController?.dispose();
+    final subtitleTrack = streamingInfo.streamingLink.getDefaultTrack();
+    subtitleController = SubtitleController(
+      provider: NetworkSubtitle(Uri.parse(subtitleTrack.file)),
+    );
+    await subtitleController?.initial();
     _videoPlayerController = VideoPlayerController.networkUrl(
       Uri.parse(streamingInfo.streamingLink.link.file),
     );
@@ -93,6 +102,19 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
       ],
       systemOverlaysOnEnterFullScreen: [],
       showSubtitles: true,
+      subtitle: Subtitles(
+        subtitleController?.subtitles
+                .map(
+                  (e) => Subtitle(
+                    index: e.index,
+                    start: e.start,
+                    end: e.end,
+                    text: e.data,
+                  ),
+                )
+                .toList() ??
+            <Subtitle>[],
+      ),
     );
     emit(
       state.copyWith(

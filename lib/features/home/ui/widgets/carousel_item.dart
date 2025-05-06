@@ -70,10 +70,10 @@ class CarouselItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      IconButton.filled(
-                        onPressed: () {},
-                        icon: const Icon(Icons.play_arrow),
-                      ),
+                      // IconButton.filled(
+                      //   onPressed: () {},
+                      //   icon: const Icon(Icons.play_arrow),
+                      // ),
                     ],
                   ),
                   const SizedBox(
