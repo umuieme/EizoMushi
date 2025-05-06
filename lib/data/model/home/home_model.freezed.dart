@@ -346,7 +346,7 @@ class _AnimeInfoHomeModel implements AnimeInfoHomeModel {
       required this.title,
       @JsonKey(name: 'japanese_title') required this.japaneseTitle,
       required this.description,
-      required this.tvInfo});
+      this.tvInfo});
   factory _AnimeInfoHomeModel.fromJson(Map<String, dynamic> json) =>
       _$AnimeInfoHomeModelFromJson(json);
 

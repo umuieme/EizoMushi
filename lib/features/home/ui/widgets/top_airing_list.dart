@@ -54,7 +54,7 @@ class AnimeHorizItem extends StatelessWidget {
         onTap: () => Navigator.push<void>(
           context,
           MaterialPageRoute(
-            builder: (context) => AnimeDetailPage(
+            builder: (context) => AnimeDetailScreen(
               animeBasicInfo: anime,
             ),
           ),
