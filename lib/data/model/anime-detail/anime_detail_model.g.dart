@@ -67,12 +67,12 @@ Map<String, dynamic> _$AnimeInfoModelToJson(_AnimeInfoModel instance) =>
     };
 
 _TvInfoModel _$TvInfoModelFromJson(Map<String, dynamic> json) => _TvInfoModel(
-      rating: json['rating'] as String,
-      quality: json['quality'] as String,
-      sub: json['sub'] as String,
-      dub: json['dub'] as String,
-      showType: json['showType'] as String,
-      duration: json['duration'] as String,
+      rating: json['rating'] as String?,
+      quality: json['quality'] as String?,
+      sub: json['sub'] as String?,
+      dub: json['dub'] as String?,
+      showType: json['showType'] as String?,
+      duration: json['duration'] as String?,
     );
 
 Map<String, dynamic> _$TvInfoModelToJson(_TvInfoModel instance) =>

@@ -7,4 +7,6 @@ extension ThemeExtension on BuildContext {
   Color get primaryColor => Theme.of(this).primaryColor;
 
   EdgeInsets get padding => MediaQuery.paddingOf(this);
+
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }

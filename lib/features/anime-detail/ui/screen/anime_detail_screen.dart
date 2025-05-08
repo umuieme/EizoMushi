@@ -158,7 +158,8 @@ class AnimeDetailInfo extends StatelessWidget {
           spacing: 8,
           children: [
             InfoChip(label: anime.showType),
-            InfoChip(label: anime.animeInfo.tvInfo.rating),
+            if (anime.animeInfo.tvInfo.rating.isNotNullOrNotEmpty)
+              InfoChip(label: anime.animeInfo.tvInfo.rating!),
             if (anime.animeInfo.status.isNotNullOrNotEmpty)
               InfoChip(label: anime.animeInfo.status!),
           ],

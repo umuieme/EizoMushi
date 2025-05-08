@@ -8,6 +8,9 @@ abstract class HomeDataModel with _$HomeDataModel {
   factory HomeDataModel({
     required List<AnimeInfoHomeModel> spotlights,
     required List<AnimeInfoHomeModel> topAiring,
+    required List<AnimeInfoHomeModel> latestEpisode,
+    required List<AnimeInfoHomeModel> latestCompleted,
+    required List<AnimeInfoHomeModel> recentlyAdded,
   }) = _HomeDataModel;
 
   factory HomeDataModel.fromJson(Map<String, Object?> json) =>
@@ -38,10 +41,16 @@ abstract class TvInfoModel with _$TvInfoModel {
     required String? releaseDate,
     required String? quality,
     required EpisodeInfoModel? episodeInfo,
+    String? sub,
+    String? dub,
   }) = _TvInfoModel;
+  const TvInfoModel._();
 
   factory TvInfoModel.fromJson(Map<String, dynamic> json) =>
       _$TvInfoModelFromJson(json);
+
+  String? get totalSub => sub ?? episodeInfo?.sub;
+  String? get totalDub => dub ?? episodeInfo?.dub;
 }
 
 @freezed

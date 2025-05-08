@@ -17,6 +17,9 @@ T _$identity<T>(T value) => value;
 mixin _$HomeDataModel {
   List<AnimeInfoHomeModel> get spotlights;
   List<AnimeInfoHomeModel> get topAiring;
+  List<AnimeInfoHomeModel> get latestEpisode;
+  List<AnimeInfoHomeModel> get latestCompleted;
+  List<AnimeInfoHomeModel> get recentlyAdded;
 
   /// Create a copy of HomeDataModel
   /// with the given fields replaced by the non-null parameter values.
@@ -36,7 +39,13 @@ mixin _$HomeDataModel {
             other is HomeDataModel &&
             const DeepCollectionEquality()
                 .equals(other.spotlights, spotlights) &&
-            const DeepCollectionEquality().equals(other.topAiring, topAiring));
+            const DeepCollectionEquality().equals(other.topAiring, topAiring) &&
+            const DeepCollectionEquality()
+                .equals(other.latestEpisode, latestEpisode) &&
+            const DeepCollectionEquality()
+                .equals(other.latestCompleted, latestCompleted) &&
+            const DeepCollectionEquality()
+                .equals(other.recentlyAdded, recentlyAdded));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -44,11 +53,14 @@ mixin _$HomeDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(spotlights),
-      const DeepCollectionEquality().hash(topAiring));
+      const DeepCollectionEquality().hash(topAiring),
+      const DeepCollectionEquality().hash(latestEpisode),
+      const DeepCollectionEquality().hash(latestCompleted),
+      const DeepCollectionEquality().hash(recentlyAdded));
 
   @override
   String toString() {
-    return 'HomeDataModel(spotlights: $spotlights, topAiring: $topAiring)';
+    return 'HomeDataModel(spotlights: $spotlights, topAiring: $topAiring, latestEpisode: $latestEpisode, latestCompleted: $latestCompleted, recentlyAdded: $recentlyAdded)';
   }
 }
 
@@ -60,7 +72,10 @@ abstract mixin class $HomeDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {List<AnimeInfoHomeModel> spotlights,
-      List<AnimeInfoHomeModel> topAiring});
+      List<AnimeInfoHomeModel> topAiring,
+      List<AnimeInfoHomeModel> latestEpisode,
+      List<AnimeInfoHomeModel> latestCompleted,
+      List<AnimeInfoHomeModel> recentlyAdded});
 }
 
 /// @nodoc
@@ -78,6 +93,9 @@ class _$HomeDataModelCopyWithImpl<$Res>
   $Res call({
     Object? spotlights = null,
     Object? topAiring = null,
+    Object? latestEpisode = null,
+    Object? latestCompleted = null,
+    Object? recentlyAdded = null,
   }) {
     return _then(_self.copyWith(
       spotlights: null == spotlights
@@ -88,6 +106,18 @@ class _$HomeDataModelCopyWithImpl<$Res>
           ? _self.topAiring
           : topAiring // ignore: cast_nullable_to_non_nullable
               as List<AnimeInfoHomeModel>,
+      latestEpisode: null == latestEpisode
+          ? _self.latestEpisode
+          : latestEpisode // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
+      latestCompleted: null == latestCompleted
+          ? _self.latestCompleted
+          : latestCompleted // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
+      recentlyAdded: null == recentlyAdded
+          ? _self.recentlyAdded
+          : recentlyAdded // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
     ));
   }
 }
@@ -97,9 +127,15 @@ class _$HomeDataModelCopyWithImpl<$Res>
 class _HomeDataModel implements HomeDataModel {
   _HomeDataModel(
       {required final List<AnimeInfoHomeModel> spotlights,
-      required final List<AnimeInfoHomeModel> topAiring})
+      required final List<AnimeInfoHomeModel> topAiring,
+      required final List<AnimeInfoHomeModel> latestEpisode,
+      required final List<AnimeInfoHomeModel> latestCompleted,
+      required final List<AnimeInfoHomeModel> recentlyAdded})
       : _spotlights = spotlights,
-        _topAiring = topAiring;
+        _topAiring = topAiring,
+        _latestEpisode = latestEpisode,
+        _latestCompleted = latestCompleted,
+        _recentlyAdded = recentlyAdded;
   factory _HomeDataModel.fromJson(Map<String, dynamic> json) =>
       _$HomeDataModelFromJson(json);
 
@@ -117,6 +153,30 @@ class _HomeDataModel implements HomeDataModel {
     if (_topAiring is EqualUnmodifiableListView) return _topAiring;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_topAiring);
+  }
+
+  final List<AnimeInfoHomeModel> _latestEpisode;
+  @override
+  List<AnimeInfoHomeModel> get latestEpisode {
+    if (_latestEpisode is EqualUnmodifiableListView) return _latestEpisode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_latestEpisode);
+  }
+
+  final List<AnimeInfoHomeModel> _latestCompleted;
+  @override
+  List<AnimeInfoHomeModel> get latestCompleted {
+    if (_latestCompleted is EqualUnmodifiableListView) return _latestCompleted;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_latestCompleted);
+  }
+
+  final List<AnimeInfoHomeModel> _recentlyAdded;
+  @override
+  List<AnimeInfoHomeModel> get recentlyAdded {
+    if (_recentlyAdded is EqualUnmodifiableListView) return _recentlyAdded;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recentlyAdded);
   }
 
   /// Create a copy of HomeDataModel
@@ -142,7 +202,13 @@ class _HomeDataModel implements HomeDataModel {
             const DeepCollectionEquality()
                 .equals(other._spotlights, _spotlights) &&
             const DeepCollectionEquality()
-                .equals(other._topAiring, _topAiring));
+                .equals(other._topAiring, _topAiring) &&
+            const DeepCollectionEquality()
+                .equals(other._latestEpisode, _latestEpisode) &&
+            const DeepCollectionEquality()
+                .equals(other._latestCompleted, _latestCompleted) &&
+            const DeepCollectionEquality()
+                .equals(other._recentlyAdded, _recentlyAdded));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -150,11 +216,14 @@ class _HomeDataModel implements HomeDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_spotlights),
-      const DeepCollectionEquality().hash(_topAiring));
+      const DeepCollectionEquality().hash(_topAiring),
+      const DeepCollectionEquality().hash(_latestEpisode),
+      const DeepCollectionEquality().hash(_latestCompleted),
+      const DeepCollectionEquality().hash(_recentlyAdded));
 
   @override
   String toString() {
-    return 'HomeDataModel(spotlights: $spotlights, topAiring: $topAiring)';
+    return 'HomeDataModel(spotlights: $spotlights, topAiring: $topAiring, latestEpisode: $latestEpisode, latestCompleted: $latestCompleted, recentlyAdded: $recentlyAdded)';
   }
 }
 
@@ -168,7 +237,10 @@ abstract mixin class _$HomeDataModelCopyWith<$Res>
   @useResult
   $Res call(
       {List<AnimeInfoHomeModel> spotlights,
-      List<AnimeInfoHomeModel> topAiring});
+      List<AnimeInfoHomeModel> topAiring,
+      List<AnimeInfoHomeModel> latestEpisode,
+      List<AnimeInfoHomeModel> latestCompleted,
+      List<AnimeInfoHomeModel> recentlyAdded});
 }
 
 /// @nodoc
@@ -186,6 +258,9 @@ class __$HomeDataModelCopyWithImpl<$Res>
   $Res call({
     Object? spotlights = null,
     Object? topAiring = null,
+    Object? latestEpisode = null,
+    Object? latestCompleted = null,
+    Object? recentlyAdded = null,
   }) {
     return _then(_HomeDataModel(
       spotlights: null == spotlights
@@ -195,6 +270,18 @@ class __$HomeDataModelCopyWithImpl<$Res>
       topAiring: null == topAiring
           ? _self._topAiring
           : topAiring // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
+      latestEpisode: null == latestEpisode
+          ? _self._latestEpisode
+          : latestEpisode // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
+      latestCompleted: null == latestCompleted
+          ? _self._latestCompleted
+          : latestCompleted // ignore: cast_nullable_to_non_nullable
+              as List<AnimeInfoHomeModel>,
+      recentlyAdded: null == recentlyAdded
+          ? _self._recentlyAdded
+          : recentlyAdded // ignore: cast_nullable_to_non_nullable
               as List<AnimeInfoHomeModel>,
     ));
   }
@@ -505,6 +592,8 @@ mixin _$TvInfoModel {
   String? get releaseDate;
   String? get quality;
   EpisodeInfoModel? get episodeInfo;
+  String? get sub;
+  String? get dub;
 
   /// Create a copy of TvInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -529,17 +618,19 @@ mixin _$TvInfoModel {
                 other.releaseDate == releaseDate) &&
             (identical(other.quality, quality) || other.quality == quality) &&
             (identical(other.episodeInfo, episodeInfo) ||
-                other.episodeInfo == episodeInfo));
+                other.episodeInfo == episodeInfo) &&
+            (identical(other.sub, sub) || other.sub == sub) &&
+            (identical(other.dub, dub) || other.dub == dub));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, showType, duration, releaseDate, quality, episodeInfo);
+  int get hashCode => Object.hash(runtimeType, showType, duration, releaseDate,
+      quality, episodeInfo, sub, dub);
 
   @override
   String toString() {
-    return 'TvInfoModel(showType: $showType, duration: $duration, releaseDate: $releaseDate, quality: $quality, episodeInfo: $episodeInfo)';
+    return 'TvInfoModel(showType: $showType, duration: $duration, releaseDate: $releaseDate, quality: $quality, episodeInfo: $episodeInfo, sub: $sub, dub: $dub)';
   }
 }
 
@@ -554,7 +645,9 @@ abstract mixin class $TvInfoModelCopyWith<$Res> {
       String duration,
       String? releaseDate,
       String? quality,
-      EpisodeInfoModel? episodeInfo});
+      EpisodeInfoModel? episodeInfo,
+      String? sub,
+      String? dub});
 
   $EpisodeInfoModelCopyWith<$Res>? get episodeInfo;
 }
@@ -576,6 +669,8 @@ class _$TvInfoModelCopyWithImpl<$Res> implements $TvInfoModelCopyWith<$Res> {
     Object? releaseDate = freezed,
     Object? quality = freezed,
     Object? episodeInfo = freezed,
+    Object? sub = freezed,
+    Object? dub = freezed,
   }) {
     return _then(_self.copyWith(
       showType: null == showType
@@ -598,6 +693,14 @@ class _$TvInfoModelCopyWithImpl<$Res> implements $TvInfoModelCopyWith<$Res> {
           ? _self.episodeInfo
           : episodeInfo // ignore: cast_nullable_to_non_nullable
               as EpisodeInfoModel?,
+      sub: freezed == sub
+          ? _self.sub
+          : sub // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dub: freezed == dub
+          ? _self.dub
+          : dub // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -618,13 +721,16 @@ class _$TvInfoModelCopyWithImpl<$Res> implements $TvInfoModelCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _TvInfoModel implements TvInfoModel {
+class _TvInfoModel extends TvInfoModel {
   const _TvInfoModel(
       {required this.showType,
       required this.duration,
       required this.releaseDate,
       required this.quality,
-      required this.episodeInfo});
+      required this.episodeInfo,
+      this.sub,
+      this.dub})
+      : super._();
   factory _TvInfoModel.fromJson(Map<String, dynamic> json) =>
       _$TvInfoModelFromJson(json);
 
@@ -638,6 +744,10 @@ class _TvInfoModel implements TvInfoModel {
   final String? quality;
   @override
   final EpisodeInfoModel? episodeInfo;
+  @override
+  final String? sub;
+  @override
+  final String? dub;
 
   /// Create a copy of TvInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -667,17 +777,19 @@ class _TvInfoModel implements TvInfoModel {
                 other.releaseDate == releaseDate) &&
             (identical(other.quality, quality) || other.quality == quality) &&
             (identical(other.episodeInfo, episodeInfo) ||
-                other.episodeInfo == episodeInfo));
+                other.episodeInfo == episodeInfo) &&
+            (identical(other.sub, sub) || other.sub == sub) &&
+            (identical(other.dub, dub) || other.dub == dub));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, showType, duration, releaseDate, quality, episodeInfo);
+  int get hashCode => Object.hash(runtimeType, showType, duration, releaseDate,
+      quality, episodeInfo, sub, dub);
 
   @override
   String toString() {
-    return 'TvInfoModel(showType: $showType, duration: $duration, releaseDate: $releaseDate, quality: $quality, episodeInfo: $episodeInfo)';
+    return 'TvInfoModel(showType: $showType, duration: $duration, releaseDate: $releaseDate, quality: $quality, episodeInfo: $episodeInfo, sub: $sub, dub: $dub)';
   }
 }
 
@@ -694,7 +806,9 @@ abstract mixin class _$TvInfoModelCopyWith<$Res>
       String duration,
       String? releaseDate,
       String? quality,
-      EpisodeInfoModel? episodeInfo});
+      EpisodeInfoModel? episodeInfo,
+      String? sub,
+      String? dub});
 
   @override
   $EpisodeInfoModelCopyWith<$Res>? get episodeInfo;
@@ -717,6 +831,8 @@ class __$TvInfoModelCopyWithImpl<$Res> implements _$TvInfoModelCopyWith<$Res> {
     Object? releaseDate = freezed,
     Object? quality = freezed,
     Object? episodeInfo = freezed,
+    Object? sub = freezed,
+    Object? dub = freezed,
   }) {
     return _then(_TvInfoModel(
       showType: null == showType
@@ -739,6 +855,14 @@ class __$TvInfoModelCopyWithImpl<$Res> implements _$TvInfoModelCopyWith<$Res> {
           ? _self.episodeInfo
           : episodeInfo // ignore: cast_nullable_to_non_nullable
               as EpisodeInfoModel?,
+      sub: freezed == sub
+          ? _self.sub
+          : sub // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dub: freezed == dub
+          ? _self.dub
+          : dub // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
