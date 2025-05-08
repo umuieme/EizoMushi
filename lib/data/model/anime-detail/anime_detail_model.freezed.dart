@@ -776,12 +776,12 @@ class __$AnimeInfoModelCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$TvInfoModel {
-  String get rating;
-  String get quality;
-  String get sub;
-  String get dub;
-  String get showType;
-  String get duration;
+  String? get rating;
+  String? get quality;
+  String? get sub;
+  String? get dub;
+  String? get showType;
+  String? get duration;
 
   /// Create a copy of TvInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -826,12 +826,12 @@ abstract mixin class $TvInfoModelCopyWith<$Res> {
       _$TvInfoModelCopyWithImpl;
   @useResult
   $Res call(
-      {String rating,
-      String quality,
-      String sub,
-      String dub,
-      String showType,
-      String duration});
+      {String? rating,
+      String? quality,
+      String? sub,
+      String? dub,
+      String? showType,
+      String? duration});
 }
 
 /// @nodoc
@@ -846,38 +846,38 @@ class _$TvInfoModelCopyWithImpl<$Res> implements $TvInfoModelCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rating = null,
-    Object? quality = null,
-    Object? sub = null,
-    Object? dub = null,
-    Object? showType = null,
-    Object? duration = null,
+    Object? rating = freezed,
+    Object? quality = freezed,
+    Object? sub = freezed,
+    Object? dub = freezed,
+    Object? showType = freezed,
+    Object? duration = freezed,
   }) {
     return _then(_self.copyWith(
-      rating: null == rating
+      rating: freezed == rating
           ? _self.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as String,
-      quality: null == quality
+              as String?,
+      quality: freezed == quality
           ? _self.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as String,
-      sub: null == sub
+              as String?,
+      sub: freezed == sub
           ? _self.sub
           : sub // ignore: cast_nullable_to_non_nullable
-              as String,
-      dub: null == dub
+              as String?,
+      dub: freezed == dub
           ? _self.dub
           : dub // ignore: cast_nullable_to_non_nullable
-              as String,
-      showType: null == showType
+              as String?,
+      showType: freezed == showType
           ? _self.showType
           : showType // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -896,17 +896,17 @@ class _TvInfoModel implements TvInfoModel {
       _$TvInfoModelFromJson(json);
 
   @override
-  final String rating;
+  final String? rating;
   @override
-  final String quality;
+  final String? quality;
   @override
-  final String sub;
+  final String? sub;
   @override
-  final String dub;
+  final String? dub;
   @override
-  final String showType;
+  final String? showType;
   @override
-  final String duration;
+  final String? duration;
 
   /// Create a copy of TvInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -958,12 +958,12 @@ abstract mixin class _$TvInfoModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String rating,
-      String quality,
-      String sub,
-      String dub,
-      String showType,
-      String duration});
+      {String? rating,
+      String? quality,
+      String? sub,
+      String? dub,
+      String? showType,
+      String? duration});
 }
 
 /// @nodoc
@@ -978,38 +978,38 @@ class __$TvInfoModelCopyWithImpl<$Res> implements _$TvInfoModelCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? rating = null,
-    Object? quality = null,
-    Object? sub = null,
-    Object? dub = null,
-    Object? showType = null,
-    Object? duration = null,
+    Object? rating = freezed,
+    Object? quality = freezed,
+    Object? sub = freezed,
+    Object? dub = freezed,
+    Object? showType = freezed,
+    Object? duration = freezed,
   }) {
     return _then(_TvInfoModel(
-      rating: null == rating
+      rating: freezed == rating
           ? _self.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as String,
-      quality: null == quality
+              as String?,
+      quality: freezed == quality
           ? _self.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as String,
-      sub: null == sub
+              as String?,
+      sub: freezed == sub
           ? _self.sub
           : sub // ignore: cast_nullable_to_non_nullable
-              as String,
-      dub: null == dub
+              as String?,
+      dub: freezed == dub
           ? _self.dub
           : dub // ignore: cast_nullable_to_non_nullable
-              as String,
-      showType: null == showType
+              as String?,
+      showType: freezed == showType
           ? _self.showType
           : showType // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }

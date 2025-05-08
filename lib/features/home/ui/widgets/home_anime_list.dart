@@ -1,13 +1,21 @@
+import 'dart:math';
+
 import 'package:eizo_mushi/app/utils/context_extension.dart';
 import 'package:eizo_mushi/data/model/home/home_model.dart';
 import 'package:eizo_mushi/features/anime-detail/ui/screen/anime_detail_screen.dart';
+import 'package:eizo_mushi/features/anime-list/ui/screen/anime_list_screen.dart';
 import 'package:eizo_mushi/features/common/widgets/app_image_view.dart';
 import 'package:flutter/material.dart';
 
-class TopAiring extends StatelessWidget {
-  const TopAiring({required this.topAiringList, super.key});
+class HomeAnimeListWidget extends StatelessWidget {
+  const HomeAnimeListWidget({
+    required this.title,
+    required this.animeList,
+    super.key,
+  });
 
-  final List<AnimeInfoHomeModel> topAiringList;
+  final List<AnimeInfoHomeModel> animeList;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +24,44 @@ class TopAiring extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Text(
-            'Top Airing',
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(),
+          child: Row(
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: context.colorScheme.primaryFixedDim,
+                    ),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AnimeListScreen(
+                        title: title,
+                        animeList: animeList,
+                      ),
+                    ),
+                  );
+                },
+                icon: Icon(
+                  Icons.arrow_forward_rounded,
+                  color: context.colorScheme.primaryFixedDim,
+                ),
+              ),
+            ],
           ),
         ),
         SizedBox(
           height: 200,
           child: ListView.builder(
             itemExtent: 200,
-            itemCount: topAiringList.length,
+            itemCount: min(animeList.length, 10),
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-              return AnimeHorizItem(anime: topAiringList[index]);
+              return AnimeHorizItem(anime: animeList[index]);
             },
           ),
         ),
@@ -61,6 +93,7 @@ class AnimeHorizItem extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 4,
           children: [
             Expanded(
               child: Hero(

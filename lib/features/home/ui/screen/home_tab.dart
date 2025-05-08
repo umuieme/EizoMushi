@@ -2,8 +2,8 @@ import 'package:eizo_mushi/app/di/di.dart';
 import 'package:eizo_mushi/features/common/widgets/app_loading.dart';
 import 'package:eizo_mushi/features/common/widgets/error_view.dart';
 import 'package:eizo_mushi/features/home/bloc/home_data_bloc.dart';
+import 'package:eizo_mushi/features/home/ui/widgets/home_anime_list.dart';
 import 'package:eizo_mushi/features/home/ui/widgets/spotlight_carousel.dart';
-import 'package:eizo_mushi/features/home/ui/widgets/top_airing_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,8 +33,21 @@ class HomeTab extends StatelessWidget {
                   SpotlightCarousel(
                     spotlightList: state.data.spotlights,
                   ),
-                  TopAiring(
-                    topAiringList: state.data.topAiring,
+                  HomeAnimeListWidget(
+                    title: 'Top Airing',
+                    animeList: state.data.topAiring,
+                  ),
+                  HomeAnimeListWidget(
+                    title: 'Latest Episode',
+                    animeList: state.data.latestEpisode,
+                  ),
+                  HomeAnimeListWidget(
+                    title: 'Latest Completed',
+                    animeList: state.data.latestCompleted,
+                  ),
+                  HomeAnimeListWidget(
+                    title: 'Recently Added',
+                    animeList: state.data.recentlyAdded,
                   ),
                 ],
               ),

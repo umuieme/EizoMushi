@@ -44,12 +44,12 @@ abstract class AnimeInfoModel with _$AnimeInfoModel {
 @freezed
 abstract class TvInfoModel with _$TvInfoModel {
   const factory TvInfoModel({
-    required String rating,
-    required String quality,
-    required String sub,
-    required String dub,
-    required String showType,
-    required String duration,
+    required String? rating,
+    required String? quality,
+    required String? sub,
+    required String? dub,
+    required String? showType,
+    required String? duration,
   }) = _TvInfoModel;
 
   factory TvInfoModel.fromJson(Map<String, dynamic> json) =>

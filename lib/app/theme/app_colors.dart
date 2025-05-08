@@ -8,6 +8,9 @@ class AppColor {
   static const Color screenBackgroundDark = Color(0xff000000);
   static const Color cardBackgroundLight = Color(0xffF7F2F6);
 
+  static const Color chipPrimary = Color(0x99C229B2);
+  static const Color chipSecondary = Color(0x22C229B2);
+
   static const Color text = Color(0xff000000);
   static const Color textLight = Color(0xffffffff);
 

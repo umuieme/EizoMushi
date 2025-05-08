@@ -14,12 +14,24 @@ _HomeDataModel _$HomeDataModelFromJson(Map<String, dynamic> json) =>
       topAiring: (json['topAiring'] as List<dynamic>)
           .map((e) => AnimeInfoHomeModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      latestEpisode: (json['latestEpisode'] as List<dynamic>)
+          .map((e) => AnimeInfoHomeModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      latestCompleted: (json['latestCompleted'] as List<dynamic>)
+          .map((e) => AnimeInfoHomeModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      recentlyAdded: (json['recentlyAdded'] as List<dynamic>)
+          .map((e) => AnimeInfoHomeModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$HomeDataModelToJson(_HomeDataModel instance) =>
     <String, dynamic>{
       'spotlights': instance.spotlights,
       'topAiring': instance.topAiring,
+      'latestEpisode': instance.latestEpisode,
+      'latestCompleted': instance.latestCompleted,
+      'recentlyAdded': instance.recentlyAdded,
     };
 
 _AnimeInfoHomeModel _$AnimeInfoHomeModelFromJson(Map<String, dynamic> json) =>
@@ -55,6 +67,8 @@ _TvInfoModel _$TvInfoModelFromJson(Map<String, dynamic> json) => _TvInfoModel(
           ? null
           : EpisodeInfoModel.fromJson(
               json['episodeInfo'] as Map<String, dynamic>),
+      sub: json['sub'] as String?,
+      dub: json['dub'] as String?,
     );
 
 Map<String, dynamic> _$TvInfoModelToJson(_TvInfoModel instance) =>
@@ -64,6 +78,8 @@ Map<String, dynamic> _$TvInfoModelToJson(_TvInfoModel instance) =>
       'releaseDate': instance.releaseDate,
       'quality': instance.quality,
       'episodeInfo': instance.episodeInfo,
+      'sub': instance.sub,
+      'dub': instance.dub,
     };
 
 _EpisodeInfoModel _$EpisodeInfoModelFromJson(Map<String, dynamic> json) =>
