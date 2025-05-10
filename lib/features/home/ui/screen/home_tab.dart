@@ -49,6 +49,7 @@ class HomeTab extends StatelessWidget {
                     title: 'Recently Added',
                     animeList: state.data.recentlyAdded,
                   ),
+                  const SizedBox(height: 16),
                 ],
               ),
             );

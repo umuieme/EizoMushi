@@ -12,6 +12,7 @@ import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_
 import 'package:eizo_mushi/features/episode-list/bloc/episode_list_bloc.dart';
 import 'package:eizo_mushi/features/home/bloc/home_data_bloc.dart';
 import 'package:eizo_mushi/features/library/bloc/favorite_list_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -19,7 +20,7 @@ final getIt = GetIt.instance;
 void setupDi() {
   getIt
     ..registerLazySingleton(() => ApiService(getIt()))
-    ..registerLazySingleton(DioHelper.new)
+    ..registerLazySingleton(() => DioHelper(dotenv.env['BASE_URL']!))
     ..registerLazySingleton(LocalDataSource.new)
     // repository
     ..registerLazySingleton(() => AnimeRepository(getIt(), getIt()))

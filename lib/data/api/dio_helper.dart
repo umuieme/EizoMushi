@@ -1,16 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:eizo_mushi/data/api/api_endpoints.dart';
 import 'package:flutter/foundation.dart';
 
 class DioHelper {
-  factory DioHelper() {
-    _instance ??= DioHelper._internal();
-    return _instance!;
-  }
-  DioHelper._internal() {
+  DioHelper(String baseUrl) {
     dio = Dio(
       BaseOptions(
-        baseUrl: Api.baseUrl,
+        baseUrl: baseUrl,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -23,7 +18,6 @@ class DioHelper {
       );
     }
   }
-  static DioHelper? _instance = DioHelper._internal();
 
   late Dio dio;
 
