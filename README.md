@@ -170,6 +170,25 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Open a pull request.
 
+## Screenshots
+Here are some screenshots of the app:
+
+### Home Screen
+![Home Screen](screenshots/home_screen.png)
+
+### Anime Details
+![Anime Details](screenshots/anime_details.png)
+
+### Video Player
+![Video Player](screenshots/video_player.png)
+![Video Player Fullscreen](screenshots/video_player_fullscreen.png)
+
+### Search
+![Search](screenshots/search.png)
+
+### Favorites
+![Search](screenshots/favorites.png)
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
