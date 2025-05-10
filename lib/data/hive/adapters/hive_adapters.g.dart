@@ -18,11 +18,11 @@ class FavoriteAnimeAdapter extends TypeAdapter<FavoriteAnime> {
     };
     return FavoriteAnime(
       id: fields[0] as String,
-      dataId: fields[1] as String,
+      dataId: fields[1] as String?,
       title: fields[2] as String,
       japaneseTitle: fields[3] as String,
       poster: fields[4] as String,
-      description: fields[5] as String,
+      description: fields[5] as String?,
     );
   }
 

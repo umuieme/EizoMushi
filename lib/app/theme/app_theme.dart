@@ -20,21 +20,7 @@ class AppTheme {
         behavior: SnackBarBehavior.floating,
       ),
       // textTheme: customTextTheme,
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColor.primary,
-        selectedIconTheme: IconThemeData(
-          color: Colors.white,
-          // size: 28,
-        ),
-        unselectedIconTheme: IconThemeData(
-          color: Colors.grey,
-        ),
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.white,
-        selectedLabelStyle: TextStyle(color: Colors.red),
-        unselectedLabelStyle: TextStyle(color: Colors.green, fontSize: 12),
-        type: BottomNavigationBarType.fixed,
-      ),
+
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColor.fabBackgroundLight,
         foregroundColor: AppColor.text,
@@ -62,11 +48,10 @@ class AppTheme {
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Color(0xff222222),
+        selectedItemColor: AppColor.primary,
+        unselectedItemColor: Colors.grey,
         selectedIconTheme: IconThemeData(
-          color: Colors.white70,
-        ),
-        unselectedIconTheme: IconThemeData(
-          color: Colors.grey,
+          size: 28,
         ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(

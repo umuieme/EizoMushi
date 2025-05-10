@@ -37,11 +37,11 @@ Map<String, dynamic> _$HomeDataModelToJson(_HomeDataModel instance) =>
 _AnimeInfoHomeModel _$AnimeInfoHomeModelFromJson(Map<String, dynamic> json) =>
     _AnimeInfoHomeModel(
       id: json['id'] as String,
-      dataId: json['data_id'] as String,
       poster: json['poster'] as String,
       title: json['title'] as String,
-      japaneseTitle: json['japanese_title'] as String,
-      description: json['description'] as String,
+      japaneseTitle: json['japanese_title'] as String?,
+      description: json['description'] as String?,
+      dataId: json['data_id'] as String?,
       tvInfo: json['tvInfo'] == null
           ? null
           : TvInfoModel.fromJson(json['tvInfo'] as Map<String, dynamic>),
@@ -50,11 +50,11 @@ _AnimeInfoHomeModel _$AnimeInfoHomeModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$AnimeInfoHomeModelToJson(_AnimeInfoHomeModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'data_id': instance.dataId,
       'poster': instance.poster,
       'title': instance.title,
       'japanese_title': instance.japaneseTitle,
       'description': instance.description,
+      'data_id': instance.dataId,
       'tvInfo': instance.tvInfo,
     };
 

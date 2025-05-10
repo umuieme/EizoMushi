@@ -21,11 +21,11 @@ abstract class HomeDataModel with _$HomeDataModel {
 abstract class AnimeInfoHomeModel with _$AnimeInfoHomeModel {
   const factory AnimeInfoHomeModel({
     required String id,
-    @JsonKey(name: 'data_id') required String dataId,
     required String poster,
     required String title,
-    @JsonKey(name: 'japanese_title') required String japaneseTitle,
-    required String description,
+    @JsonKey(name: 'japanese_title') String? japaneseTitle,
+    String? description,
+    @JsonKey(name: 'data_id') String? dataId,
     TvInfoModel? tvInfo,
   }) = _AnimeInfoHomeModel;
 
