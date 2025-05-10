@@ -290,13 +290,13 @@ class __$HomeDataModelCopyWithImpl<$Res>
 /// @nodoc
 mixin _$AnimeInfoHomeModel {
   String get id;
-  @JsonKey(name: 'data_id')
-  String get dataId;
   String get poster;
   String get title;
   @JsonKey(name: 'japanese_title')
-  String get japaneseTitle;
-  String get description;
+  String? get japaneseTitle;
+  String? get description;
+  @JsonKey(name: 'data_id')
+  String? get dataId;
   TvInfoModel? get tvInfo;
 
   /// Create a copy of AnimeInfoHomeModel
@@ -316,24 +316,24 @@ mixin _$AnimeInfoHomeModel {
         (other.runtimeType == runtimeType &&
             other is AnimeInfoHomeModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.dataId, dataId) || other.dataId == dataId) &&
             (identical(other.poster, poster) || other.poster == poster) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.japaneseTitle, japaneseTitle) ||
                 other.japaneseTitle == japaneseTitle) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.dataId, dataId) || other.dataId == dataId) &&
             (identical(other.tvInfo, tvInfo) || other.tvInfo == tvInfo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, dataId, poster, title,
-      japaneseTitle, description, tvInfo);
+  int get hashCode => Object.hash(runtimeType, id, poster, title, japaneseTitle,
+      description, dataId, tvInfo);
 
   @override
   String toString() {
-    return 'AnimeInfoHomeModel(id: $id, dataId: $dataId, poster: $poster, title: $title, japaneseTitle: $japaneseTitle, description: $description, tvInfo: $tvInfo)';
+    return 'AnimeInfoHomeModel(id: $id, poster: $poster, title: $title, japaneseTitle: $japaneseTitle, description: $description, dataId: $dataId, tvInfo: $tvInfo)';
   }
 }
 
@@ -345,11 +345,11 @@ abstract mixin class $AnimeInfoHomeModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'data_id') String dataId,
       String poster,
       String title,
-      @JsonKey(name: 'japanese_title') String japaneseTitle,
-      String description,
+      @JsonKey(name: 'japanese_title') String? japaneseTitle,
+      String? description,
+      @JsonKey(name: 'data_id') String? dataId,
       TvInfoModel? tvInfo});
 
   $TvInfoModelCopyWith<$Res>? get tvInfo;
@@ -369,21 +369,17 @@ class _$AnimeInfoHomeModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? dataId = null,
     Object? poster = null,
     Object? title = null,
-    Object? japaneseTitle = null,
-    Object? description = null,
+    Object? japaneseTitle = freezed,
+    Object? description = freezed,
+    Object? dataId = freezed,
     Object? tvInfo = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      dataId: null == dataId
-          ? _self.dataId
-          : dataId // ignore: cast_nullable_to_non_nullable
               as String,
       poster: null == poster
           ? _self.poster
@@ -393,14 +389,18 @@ class _$AnimeInfoHomeModelCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      japaneseTitle: null == japaneseTitle
+      japaneseTitle: freezed == japaneseTitle
           ? _self.japaneseTitle
           : japaneseTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      dataId: freezed == dataId
+          ? _self.dataId
+          : dataId // ignore: cast_nullable_to_non_nullable
+              as String?,
       tvInfo: freezed == tvInfo
           ? _self.tvInfo
           : tvInfo // ignore: cast_nullable_to_non_nullable
@@ -428,11 +428,11 @@ class _$AnimeInfoHomeModelCopyWithImpl<$Res>
 class _AnimeInfoHomeModel implements AnimeInfoHomeModel {
   const _AnimeInfoHomeModel(
       {required this.id,
-      @JsonKey(name: 'data_id') required this.dataId,
       required this.poster,
       required this.title,
-      @JsonKey(name: 'japanese_title') required this.japaneseTitle,
-      required this.description,
+      @JsonKey(name: 'japanese_title') this.japaneseTitle,
+      this.description,
+      @JsonKey(name: 'data_id') this.dataId,
       this.tvInfo});
   factory _AnimeInfoHomeModel.fromJson(Map<String, dynamic> json) =>
       _$AnimeInfoHomeModelFromJson(json);
@@ -440,17 +440,17 @@ class _AnimeInfoHomeModel implements AnimeInfoHomeModel {
   @override
   final String id;
   @override
-  @JsonKey(name: 'data_id')
-  final String dataId;
-  @override
   final String poster;
   @override
   final String title;
   @override
   @JsonKey(name: 'japanese_title')
-  final String japaneseTitle;
+  final String? japaneseTitle;
   @override
-  final String description;
+  final String? description;
+  @override
+  @JsonKey(name: 'data_id')
+  final String? dataId;
   @override
   final TvInfoModel? tvInfo;
 
@@ -475,24 +475,24 @@ class _AnimeInfoHomeModel implements AnimeInfoHomeModel {
         (other.runtimeType == runtimeType &&
             other is _AnimeInfoHomeModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.dataId, dataId) || other.dataId == dataId) &&
             (identical(other.poster, poster) || other.poster == poster) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.japaneseTitle, japaneseTitle) ||
                 other.japaneseTitle == japaneseTitle) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.dataId, dataId) || other.dataId == dataId) &&
             (identical(other.tvInfo, tvInfo) || other.tvInfo == tvInfo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, dataId, poster, title,
-      japaneseTitle, description, tvInfo);
+  int get hashCode => Object.hash(runtimeType, id, poster, title, japaneseTitle,
+      description, dataId, tvInfo);
 
   @override
   String toString() {
-    return 'AnimeInfoHomeModel(id: $id, dataId: $dataId, poster: $poster, title: $title, japaneseTitle: $japaneseTitle, description: $description, tvInfo: $tvInfo)';
+    return 'AnimeInfoHomeModel(id: $id, poster: $poster, title: $title, japaneseTitle: $japaneseTitle, description: $description, dataId: $dataId, tvInfo: $tvInfo)';
   }
 }
 
@@ -506,11 +506,11 @@ abstract mixin class _$AnimeInfoHomeModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'data_id') String dataId,
       String poster,
       String title,
-      @JsonKey(name: 'japanese_title') String japaneseTitle,
-      String description,
+      @JsonKey(name: 'japanese_title') String? japaneseTitle,
+      String? description,
+      @JsonKey(name: 'data_id') String? dataId,
       TvInfoModel? tvInfo});
 
   @override
@@ -531,21 +531,17 @@ class __$AnimeInfoHomeModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? id = null,
-    Object? dataId = null,
     Object? poster = null,
     Object? title = null,
-    Object? japaneseTitle = null,
-    Object? description = null,
+    Object? japaneseTitle = freezed,
+    Object? description = freezed,
+    Object? dataId = freezed,
     Object? tvInfo = freezed,
   }) {
     return _then(_AnimeInfoHomeModel(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      dataId: null == dataId
-          ? _self.dataId
-          : dataId // ignore: cast_nullable_to_non_nullable
               as String,
       poster: null == poster
           ? _self.poster
@@ -555,14 +551,18 @@ class __$AnimeInfoHomeModelCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      japaneseTitle: null == japaneseTitle
+      japaneseTitle: freezed == japaneseTitle
           ? _self.japaneseTitle
           : japaneseTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      dataId: freezed == dataId
+          ? _self.dataId
+          : dataId // ignore: cast_nullable_to_non_nullable
+              as String?,
       tvInfo: freezed == tvInfo
           ? _self.tvInfo
           : tvInfo // ignore: cast_nullable_to_non_nullable

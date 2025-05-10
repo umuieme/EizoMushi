@@ -1,5 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:eizo_mushi/features/home/ui/screen/home_tab.dart';
 import 'package:eizo_mushi/features/library/ui/screen/library_tab.dart';
+import 'package:eizo_mushi/features/search/ui/screen/anime_search_tab.dart';
 import 'package:eizo_mushi/features/settings/ui/screen/settings_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,8 +18,8 @@ class MainScreen extends HookWidget {
         index: selectedIndex.value,
         children: const [
           HomeTab(),
+          AnimeSearchTab(),
           LibraryTab(),
-          SettingsTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -30,12 +33,12 @@ class MainScreen extends HookWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.video_library_outlined),
-            label: 'Library',
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.video_library_outlined),
+            label: 'Library',
           ),
         ],
       ),

@@ -125,4 +125,24 @@ class AnimeRepository {
       return left(ErrorResponse.withMessage('Could not remove watched'));
     }
   }
+
+  Future<Either<ErrorResponse, List<AnimeInfoHomeModel>>> searchAnime({
+    required String keyword,
+    int? page = 1,
+  }) {
+    return _apiService.get(
+      endpoint: Api.search,
+      queryParams: {
+        'keyword': keyword,
+        'page': page,
+      },
+      fromJson: (json) {
+        final data = json['data']! as List;
+
+        return data
+            .map((e) => AnimeInfoHomeModel.fromJson(e as Map<String, dynamic>))
+            .toList();
+      },
+    );
+  }
 }

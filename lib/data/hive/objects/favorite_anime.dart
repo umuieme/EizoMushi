@@ -4,11 +4,11 @@ import 'package:hive_ce/hive.dart';
 class FavoriteAnime extends HiveObject {
   FavoriteAnime({
     required this.id,
-    required this.dataId,
     required this.title,
-    required this.japaneseTitle,
     required this.poster,
-    required this.description,
+    this.dataId,
+    this.japaneseTitle,
+    this.description,
   });
 
   FavoriteAnime.fromModel(AnimeInfoHomeModel model)
@@ -20,9 +20,9 @@ class FavoriteAnime extends HiveObject {
         description = model.description;
 
   String id;
-  String dataId;
+  String? dataId;
   String title;
-  String japaneseTitle;
+  String? japaneseTitle;
   String poster;
-  String description;
+  String? description;
 }

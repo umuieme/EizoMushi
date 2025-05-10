@@ -75,12 +75,13 @@ class AnimeItemWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  anime.description,
-                  style: context.textTheme.bodySmall,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                if (anime.description != null)
+                  Text(
+                    anime.description!,
+                    style: context.textTheme.bodySmall,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
               ],
             ),
           ),

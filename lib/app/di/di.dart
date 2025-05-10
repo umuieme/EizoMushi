@@ -12,6 +12,7 @@ import 'package:eizo_mushi/features/anime-player/bloc/video_player/video_player_
 import 'package:eizo_mushi/features/episode-list/bloc/episode_list_bloc.dart';
 import 'package:eizo_mushi/features/home/bloc/home_data_bloc.dart';
 import 'package:eizo_mushi/features/library/bloc/favorite_list_bloc.dart';
+import 'package:eizo_mushi/features/search/bloc/anime_search_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
@@ -48,5 +49,8 @@ void setupDi() {
     )
     ..registerFactory(
       () => FavoriteBloc(repository: getIt()),
+    )
+    ..registerFactory(
+      () => AnimeSearchBloc(repository: getIt()),
     );
 }
